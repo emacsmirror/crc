@@ -29,6 +29,23 @@
 ;; seq-reduce
 (require 'seq)
 
+(defun crc-32 (sequence &optional polynomial)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
+
+POLYNOMIAL may be a boolean or an integer.
+
+While CRC-32 can work with any integer, only two are widely used.  If POLYNOMIAL
+is \\='nil\\=', the IEEE polynomial (3,988,292,384 or #xEDB88320) will be used;
+this polynomial is used by Bzip2, Ethernet (IEEE 802.3), Gzip, MPEG-2, PNG,
+SATA, and Zip, amongst others.
+
+If POLYNOMIAL is \\='t\\=', the Castagnoli polynomial (2,197,175,160 or
+#x82F63B78) will be used; this polynomial is used by Btrfs, Ext4, iSCSI, and
+SCTP, amongst others.
+
+If POLYNOMIAL is an integer, the provided integer will be used for the
+algorithm."
+
 
 (provide 'crc-32)
 
