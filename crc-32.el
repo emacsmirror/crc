@@ -46,6 +46,19 @@ SCTP, amongst others.
 If POLYNOMIAL is an integer, the provided integer will be used for the
 algorithm."
 
+  (logxor (seq-reduce (lambda (res1 byte)
+                        (seq-reduce (lambda (res2 _i)
+                                      (logxor (/ res2 2)
+                                              (* (cond
+                                                  ((integerp polynomial) polynomial)
+                                                  (polynomial            #x82F63B78)
+                                                  (t                     #xEDB88320))
+                                                 (logand res2 1))))
+                                    (number-sequence 0 7)
+                                    (logxor res1 byte)))
+                      sequence
+                      #xFFFFFFFF)
+          #xFFFFFFFF))
 
 (provide 'crc-32)
 
