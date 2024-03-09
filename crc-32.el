@@ -4,6 +4,7 @@
 
 ;; Author: Jean Libète <tomenzgg@mail.mayfirst.org>
 ;; URL: https://codeberg.org/tomenzgg/Emacs-CRC-32
+;; Package-Requires: ((emacs "25.1"))
 ;; Keywords: lisp, checksum, algorithms
 ;; Version: 1.0.0
 
@@ -25,6 +26,9 @@
 ;; Library implementing the checksum algorithm Cyclic Redundancy Check 32.
 
 ;;; Code:
+;; seq-reduce
+(require 'seq)
+
 
 (provide 'crc-32)
 
