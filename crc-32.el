@@ -28,4 +28,7 @@
 
 (provide 'crc-32)
 
+;; Local Variables:
+;; indent-tabs-mode: nil
+;; End:
 ;;; crc-32.el ends here
