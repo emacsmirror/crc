@@ -1,9 +1,9 @@
-;;; crc-32.el --- CRC-32                     -*- lexical-binding: t; -*-
+;;; crc.el --- Cyclic Redundancy Check               -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2024  Jean Libète
 
 ;; Author: Jean Libète <tomenzgg@mail.mayfirst.org>
-;; URL: https://codeberg.org/tomenzgg/Emacs-CRC-32
+;; URL: https://codeberg.org/tomenzgg/Emacs-CRC
 ;; Package-Requires: ((emacs "25.1"))
 ;; Keywords: lisp, checksum, algorithms
 ;; Version: 1.0.0
@@ -23,7 +23,7 @@
 
 ;;; Commentary:
 
-;; Library implementing the checksum algorithm Cyclic Redundancy Check 32.
+;; Library implementing checksum algorithm Cyclic Redundancy Check variations.
 
 ;;; Code:
 ;; seq-reduce
@@ -60,9 +60,9 @@ algorithm."
                       #xFFFFFFFF)
           #xFFFFFFFF))
 
-(provide 'crc-32)
+(provide 'crc)
 
 ;; Local Variables:
 ;; indent-tabs-mode: nil
 ;; End:
-;;; crc-32.el ends here
+;;; crc.el ends here
