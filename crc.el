@@ -29,17 +29,16 @@
 ;; seq-reduce
 (require 'seq)
 
-(defun crc-8--reverse (byte)
-  "Reverse the bits of BYTE.
+(defun crc--reverse-bits (integer number-of-bits)
+  "Reverse the bits of INTEGER, starting from the right, by the NUMBER-OF-BITS."
 
-As implied by the argument name, BYTE should be an integer of no more than 8
-bits."
+  (let ((maxindex (1- number-of-bits)))
+    (seq-reduce (lambda (result i) (if (zerop (logand integer (expt 2 i)))
+                                       result
+                                     (logior result (expt 2 (- maxindex i)))))
+                (number-sequence 0 maxindex)
+                0)))
 
-  (seq-reduce (lambda (result i) (if (zerop (logand byte (expt 2 i)))
-                                     result
-                                   (logior result (expt 2 (- 7 i)))))
-              (number-sequence 0 7)
-              0))
 (defun crc-8--general (sequence polynomial init ref-in ref-out xor-out)
   "General Cyclic Redundancy Check, 8-bit, application with customization.
 
