@@ -29,6 +29,17 @@
 ;; seq-reduce
 (require 'seq)
 
+(defun crc-8--reverse (byte)
+  "Reverse the bits of BYTE.
+
+As implied by the argument name, BYTE should be an integer of no more than 8
+bits."
+
+  (seq-reduce (lambda (result i) (if (zerop (logand byte (expt 2 i)))
+                                     result
+                                   (logior result (expt 2 (- 7 i)))))
+              (number-sequence 0 7)
+              0))
 (defun crc-32 (sequence &optional polynomial)
   "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
 
