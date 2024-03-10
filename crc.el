@@ -598,36 +598,16 @@ https://www.itu.int/rec/T-REC-V.41/en"
 
   (crc--general sequence 16 #x1021 #x0000 nil nil #x0000))
 
-(defun crc-32 (sequence &optional polynomial)
+(defun crc-32 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
 
-POLYNOMIAL may be a boolean or an integer.
+Aliases: CRC-32/ADCCP, CRC-32/ISO-HDLC, CRC-32/V-42, CRC-32/XZ, PKZIP.
 
-While CRC-32 can work with any integer, only two are widely used.  If POLYNOMIAL
-is \\='nil\\=', the IEEE polynomial (3,988,292,384 or #xEDB88320) will be used;
-this polynomial is used by Bzip2, Ethernet (IEEE 802.3), Gzip, MPEG-2, PNG,
-SATA, and Zip, amongst others.
+ITU-T Recommendation V.42 (March 2002):
+--Definition: Residue; full mathematical description (Section 8.1.1.6.2, p.17)
+https://www.itu.int/rec/T-REC-V.42/en"
 
-If POLYNOMIAL is \\='t\\=', the Castagnoli polynomial (2,197,175,160 or
-#x82F63B78) will be used; this polynomial is used by Btrfs, Ext4, iSCSI, and
-SCTP, amongst others.
-
-If POLYNOMIAL is an integer, the provided integer will be used for the
-algorithm."
-
-  (logxor (seq-reduce (lambda (res1 byte)
-                        (seq-reduce (lambda (res2 _i)
-                                      (logxor (/ res2 2)
-                                              (* (cond
-                                                  ((integerp polynomial) polynomial)
-                                                  (polynomial            #x82F63B78)
-                                                  (t                     #xEDB88320))
-                                                 (logand res2 1))))
-                                    (number-sequence 0 7)
-                                    (logxor res1 byte)))
-                      sequence
-                      #xFFFFFFFF)
-          #xFFFFFFFF))
+  (crc--general sequence 32 #x04C11DB7 #xFFFFFFFF   t   t #xFFFFFFFF))
 
 (provide 'crc)
 
