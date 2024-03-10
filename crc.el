@@ -40,6 +40,39 @@ bits."
                                    (logior result (expt 2 (- 7 i)))))
               (number-sequence 0 7)
               0))
+(defun crc-8--general (sequence polynomial init ref-in ref-out xor-out)
+  "General Cyclic Redundancy Check, 8-bit, application with customization.
+
+Because there are varying versions of CRC-8 – depending on the Polynomial,
+Initialization value, RefIn and RefOut, and the XorOut –, this function serves
+to handle any possible iteration that needs to be computed.
+
+SEQUENCE is a list, vector, or string.
+
+POLYNOMIAL and INIT are integers.
+
+REF-IN and REF-OUT are booleans.
+
+XOR-OUT is a integer."
+
+  (logand
+    (logxor (funcall (if ref-out #'crc-8--reverse #'identity)
+                     (seq-reduce (lambda (res1 byte)
+                                   (seq-reduce (lambda (res2 _i)
+                                                 (let ((shift1 (ash res2 1)))
+                                                   (if (zerop (logand res2 #x80))
+                                                       shift1
+                                                     (logxor shift1 polynomial))))
+                                               (number-sequence 0 7)
+                                               (logxor res1
+                                                       (funcall (if ref-in
+                                                                    #'crc-8--reverse
+                                                                  #'identity)
+                                                                byte))))
+                                 sequence
+                                 init))
+            xor-out)
+    #b11111111))
 (defun crc-32 (sequence &optional polynomial)
   "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
 
