@@ -55,7 +55,7 @@ REF-IN and REF-OUT are booleans.
 XOR-OUT is a integer."
 
   (logand
-    (logxor (funcall (if ref-out #'crc-8--reverse #'identity)
+    (logxor (funcall (if ref-out #'crc--reverse-bits (lambda (n _b) n))
                      (seq-reduce (lambda (res1 byte)
                                    (seq-reduce (lambda (res2 _i)
                                                  (let ((shift1 (ash res2 1)))
@@ -65,11 +65,13 @@ XOR-OUT is a integer."
                                                (number-sequence 0 7)
                                                (logxor res1
                                                        (funcall (if ref-in
-                                                                    #'crc-8--reverse
-                                                                  #'identity)
-                                                                byte))))
+                                                                    #'crc--reverse-bits
+                                                                  (lambda (n _b) n))
+                                                                byte
+                                                                8))))
                                  sequence
-                                 init))
+                                 init)
+                     8)
             xor-out)
     #b11111111))
 (defun crc-8 (sequence)
