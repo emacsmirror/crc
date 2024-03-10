@@ -627,6 +627,39 @@ https://www.itu.int/rec/T-REC-V.41/en"
 
   (crc-16--general sequence #x1021 #x0000 nil nil #x0000))
 
+(defun crc-32--general (sequence polynomial init ref-in ref-out xor-out)
+  "General Cyclic Redundancy Check, 32-bit, application with customization.
+
+Because there are varying versions of CRC-32 – depending on the Polynomial,
+Initialization value, RefIn and RefOut, and the XorOut –, this function serves
+to handle any possible iteration that needs to be computed.
+
+SEQUENCE is a list, vector, or string.
+
+POLYNOMIAL and INIT are integers.
+
+REF-IN and REF-OUT are booleans.
+
+XOR-OUT is a integer."
+
+  (logand
+    (logxor (funcall (if ref-out #'crc--reverse-bits (lambda (n _b) n))
+                     (seq-reduce (lambda (res1 byte)
+                                   (seq-reduce (lambda (res2 _i)
+                                                 (let ((shift1 (ash res2 1)))
+                                                   (if (zerop (logand res2 #x80000000))
+                                                       shift1
+                                                     (logxor shift1 polynomial))))
+                                               (number-sequence 0 7)
+                                               (logxor res1
+                                                       (if ref-in
+                                                           (crc--reverse-bits byte 32)
+                                                         (ash byte (- 32 8))))))
+                                 sequence
+                                 init)
+                     32)
+            xor-out)
+    #b11111111111111111111111111111111))
 (defun crc-32 (sequence &optional polynomial)
   "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
 
