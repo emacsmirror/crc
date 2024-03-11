@@ -1000,6 +1000,15 @@ https://www.g7jjf.com/bbc.htm"
 
   (crc--general sequence 32 #x000000AF #x00000000 nil nil #x00000000))
 
+(defun crc-40/gsm (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 40-bit values.
+
+ETSI TS 100 909 version 8.9.0 (January 2005):
+--Full mathematical description (Section 4.1.2, p.61)
+https://www.etsi.org/deliver/etsi_ts/100900_100999/100909/08.09.00_60/ts_100909v080900p.pdf"
+
+  (crc--general sequence 40 #x0004820009 #x0000000000 nil nil #xFFFFFFFFFF))
+
 (provide 'crc)
 
 ;; Local Variables:
