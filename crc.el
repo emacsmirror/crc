@@ -750,6 +750,16 @@ https://www.itu.int/rec/T-REC-V.41/en"
 
   (crc--general sequence 16 #x1021 #x0000 nil nil #x0000))
 
+(defun crc-17/can-fd (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 16-bit values.
+
+Robert Bosch GmbH (17 April 2012), CAN with Flexible Data-Rate: Specification,
+version 1.0:
+--Full definition (except Check); pseudocode (Section 3.2.1, pp.13–14)
+https://web.archive.org/web/20151017122935/http://www.bosch-semiconductors.de/media/pdf_1/canliteratur/can_fd_spec.pdf"
+
+  (crc--general sequence 17 #x1685b #x00000 nil nil #x00000))
+
 (defun crc-32 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
 
