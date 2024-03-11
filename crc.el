@@ -304,6 +304,29 @@ https://www.etsi.org/deliver/etsi_ts/100900_100999/100909/08.09.00_60/ts_100909v
 
   (crc--general sequence 10 #x175 #x000 nil nil #x3FF))
 
+(defun crc-11 (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 8-bit values.
+
+Aliases: CRC-11/FLEXRAY.
+
+FlexRay Consortium (October 2010), FlexRay Communications System Protocol
+Specification, version 3.0.1:
+--Definition: Width, Poly, Init, RefOut (Section 4.2.8, pp.114–5)
+--Pseudocode (Section 4.5, pp.118–9)
+https://svn.ipd.kit.edu/nlrp/public/FlexRay/FlexRay%E2%84%A2%20Protocol%20Specification%20Version%203.0.1.pdf"
+
+  (crc--general sequence 11 #x385 #x01A nil nil #x000))
+(defun crc-11/umts (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 8-bit values.
+
+3rd Generation Partnership Project (3GPP) TS 25.427 version 17.0.0 (April
+2022) — ETSI TS 125 427 version 17.0.0 (April 2022):
+--Definition: Width, Poly, Init, XorOut (Section 7.2.1, p.40)
+--Definition: RefIn, RefOut (Section 6.1.1, p.20; Section 7.2.1.1, pp.40–1)
+https://www.etsi.org/deliver/etsi_ts/125400_125499/125427/17.00.00_60/ts_125427v170000p.pdf"
+
+  (crc--general sequence 11 #x307 #x000 nil nil #x000))
+
 (defun crc-16 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to hashed 16-bit values.
 
