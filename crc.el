@@ -546,16 +546,6 @@ Specification of CRC Routines:
 https://www.autosar.org/fileadmin/user_upload/standards/classic/22-11/AUTOSAR_SWS_CRCLibrary.pdf"
 
   (crc--general sequence 16 #x1021 #xFFFF nil nil #x0000))
-(defun crc-16/ibm-sdlc (sequence)
-  "Convert a SEQUENCE (a list, vector, or string) to hashed 16-bit values.
-
-Aliases: CRC-16/ISO-HDLC, CRC-16/ISO-IEC-14443-3-B, CRC-16/X-25, CRC-B, X-25.
-
-ITU-T Recommendation T.30 (September 2005):
---Definition: Residue; full mathematical description (Section 5.3.7, p.78)
-https://www.itu.int/rec/T-REC-T.30/en"
-
-  (crc--general sequence 16 #x1021 #xFFFF   t   t #xFFFF))
 (defun crc-16/iso-iec-14443-3-a (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to hashed 16-bit values.
 
@@ -567,6 +557,16 @@ ISO/IEC FCD 14443-3 (24 November 2008):
 https://wg8.de/wg8n1496_17n3613_Ballot_FCD14443-3.pdf"
 
   (crc--general sequence 16 #x1021 #xC6C6   t   t #x0000))
+(defun crc-16/iso-iec-14443-3-b (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 16-bit values.
+
+Aliases: CRC-16/IBM-SDLC, CRC-16/ISO-HDLC, CRC-16/X-25, CRC-B, X-25.
+
+ITU-T Recommendation T.30 (September 2005):
+--Definition: Residue; full mathematical description (Section 5.3.7, p.78)
+https://www.itu.int/rec/T-REC-T.30/en"
+
+  (crc--general sequence 16 #x1021 #xFFFF   t   t #xFFFF))
 (defun crc-16/kermit (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to hashed 16-bit values.
 
