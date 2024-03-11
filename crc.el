@@ -404,6 +404,28 @@ https://www.etsi.org/deliver/etsi_ts/100900_100999/100909/08.09.00_60/ts_100909v
 
   (crc--general sequence 14 #x202D #x0000 nil nil #x3fff))
 
+(defun crc-15 (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 8-bit values.
+
+Aliases: CRC-15/CAN.
+
+Robert Bosch GmbH (September 1991), CAN 2.0 Specification:
+--Full definition (except Check) (Section 3.1.1, pp.13–14)
+--Pseudocode
+https://github.com/ThrowTheSwitch/pcan-ruby/raw/master/doc/can2spec.pdf"
+
+  (crc--general sequence 15 #x4599 #x0000 nil nil #x0000))
+(defun crc-15/mpt1327 (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 8-bit values.
+
+UK Radiocommunications Agency (20 June 1997), MPT 1327: A signalling standard
+for trunked private land mobile radio systems, 3rd edition:
+--Full mathematical description (Section 3.2.3, p.3-3)
+--Error control properties (Appendix 2, p.A2-1)
+https://webarchive.nationalarchives.gov.uk/ukgwa/20160106142225/http://www.ofcom.org.uk/static/archive/ra/publication/mpt/mpt_pdf/mpt1327.pdf"
+
+  (crc--general sequence 15 #x6815 #x0000 nil nil #x0001))
+
 (defun crc-16 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to hashed 16-bit values.
 
