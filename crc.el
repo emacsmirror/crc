@@ -770,6 +770,87 @@ https://reveng.sourceforge.io/crc-catalogue/17plus.htm#crc.cat-bits.32"
 
   (crc--general sequence 21 #x102899 #x000000 nil nil #x000000))
 
+(defun crc-24 (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 24-bit values.
+
+Aliases: CRC-24/OPENPGP.
+
+IETF RFC 4880 (November 2007):
+--Definition: Width, Poly, Init (Section 6, p.53)
+--Code: C (Section 6.1, p.54)
+https://datatracker.ietf.org/doc/html/rfc4880"
+
+  (crc--general sequence 24 #x864CFB #xB704CE nil nil #x000000))
+(defun crc-24/ble (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 24-bit values.
+
+Bluetooth SIG (31 January 2023), Bluetooth Specification, Core Version 5.4:
+--Full definition (except Check) (Section 6.B.3.1.1, pp.2746–7)
+--Shift register diagram (Figure 6.B.3.4, p.2747)
+https://www.bluetooth.org/DocMan/handlers/DownloadDoc.ashx?doc_id=521059"
+
+  (crc--general sequence 24 #x00065B #x555555   t   t #x000000))
+(defun crc-24/flexray-a (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 24-bit values.
+
+FlexRay Consortium (October 2010), FlexRay Communications System Protocol
+Specification, version 3.0.1:
+--Definition: Width, Poly, Init, RefOut (Section 4.4, pp.117–8)
+--Pseudocode (Section 4.5, pp.118–20)
+https://svn.ipd.kit.edu/nlrp/public/FlexRay/FlexRay%E2%84%A2%20Protocol%20Specification%20Version%203.0.1.pdf"
+
+  (crc--general sequence 24 #x5D6DCB #xFEDCBA nil nil #x000000))
+(defun crc-24/flexray-b (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 24-bit values.
+
+FlexRay Consortium (October 2010), FlexRay Communications System Protocol
+Specification, version 3.0.1:
+--Definition: Width, Poly, Init, RefOut (Section 4.4, pp.117–8)
+--Pseudocode (Section 4.5, pp.118–20)
+https://svn.ipd.kit.edu/nlrp/public/FlexRay/FlexRay%E2%84%A2%20Protocol%20Specification%20Version%203.0.1.pdf"
+
+  (crc--general sequence 24 #x5D6DCB #xABCDEF nil nil #x000000))
+(defun crc-24/interlaken (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 24-bit values.
+
+The Interlaken Alliance (7 October 2008), Interlaken Protocol Definition,
+version 1.2:
+--Definition: Width, Poly (Section 5.3.2.2, p.18)
+--Definition: Init, RefIn, RefOut, XorOut (Appendix B, p.48)
+https://4b1b46.a2cdn1.secureserver.net/wp-content/uploads/2019/12/Interlaken_Protocol_Definition_v1.2.pdf"
+
+  (crc--general sequence 24 #x328B63 #xFFFFFF nil nil #xFFFFFF))
+(defun crc-24/lte-a (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 24-bit values.
+
+3rd Generation Partnership Project (3GPP) TS 36.212 version 17.1.0 (March
+2022) — ETSI TS 136 212 version 17.1.0 (April 2022):
+--Definition: Width, Poly, Init, XorOut, Residue (Section 5.1.1, pp.10–11)
+--Attachment relation, defining RefIn ^ RefOut (Section 5.1.1, p.11)
+https://www.etsi.org/deliver/etsi_ts/136200_136299/136212/17.01.00_60/ts_136212v170100p.pdf"
+
+  (crc--general sequence 24 #x864CFB #x000000 nil nil #x000000))
+(defun crc-24/lte-b (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 24-bit values.
+
+3rd Generation Partnership Project (3GPP) TS 36.212 version 17.1.0 (March 2022)
+— ETSI TS 136 212 version 17.1.0 (April 2022):
+--Definition: Width, Poly, Init, XorOut, Residue (Section 5.1.1, pp.10–11)
+--Attachment relation, defining RefIn ^ RefOut (Section 5.1.1, p.11)
+https://www.etsi.org/deliver/etsi_ts/136200_136299/136212/17.01.00_60/ts_136212v170100p.pdf"
+
+  (crc--general sequence 24 #x800063 #x000000 nil nil #x000000))
+(defun crc-24/os-9 (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 24-bit values.
+
+Microware Systems Corporation (January 1983), OS-9 Operating System, System
+Programmer's Manual, revision F-1:
+--Definition: Width, Poly, Init, XorOut, Residue (Section 10.1.4, pp.51–2)
+--Code: C (Section 10.1.4, p.52)
+https://www.roug.org/soren/6809/os9sysprog.html"
+
+  (crc--general sequence 24 #x800063 #xFFFFFF nil nil #xFFFFFF))
+
 (defun crc-32 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
 
