@@ -860,6 +860,17 @@ https://web.archive.org/web/20181118221951/https://www.ccsa.org.cn/english/yd183
 
   (crc--general sequence 30 #x2030B9C7 #x3FFFFFFF nil nil #x3FFFFFFF))
 
+(defun crc-31/philips (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 24-bit values.
+
+Philips 37PF9731 LCD TV:
+--Implementation
+
+\"gigirex\" (1 March 2012), Computer Interfacing Forum topic 1774:
+https://web.archive.org/web/20181116141051/https://www.lammertbies.nl/forum/viewtopic.php?t=1774"
+
+  (crc--general sequence 30 #x04C11DB7 #x7FFFFFFF nil nil #x7FFFFFFF))
+
 (defun crc-32 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
 
