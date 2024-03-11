@@ -851,6 +851,15 @@ https://www.roug.org/soren/6809/os9sysprog.html"
 
   (crc--general sequence 24 #x800063 #xFFFFFF nil nil #xFFFFFF))
 
+(defun crc-30/cdma (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 24-bit values.
+
+CCSA Telecommunication Industry Standard YD/T 1838.3-2008 (5 November 2008):
+--Full definition (except Check, Residue) (Section 2.1.1.5.1.2, pp.2-44–5)
+https://web.archive.org/web/20181118221951/https://www.ccsa.org.cn/english/yd1838/Technical%20Requirements%20of%20Link%20Access%20Control%20(LAC)%20for%20the%20CDMA-based%20Digital%20Trunking%20Mobile%20Communication%20System.pdf"
+
+  (crc--general sequence 30 #x2030B9C7 #x3FFFFFFF nil nil #x3FFFFFFF))
+
 (defun crc-32 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
 
