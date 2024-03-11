@@ -76,7 +76,7 @@ XOR-OUT is a integer."
                 init)
               number-of-bits)
             xor-out)
-    (1- (expt 2 number-of-bits))))
+    (1- (expt 2 (* (/ number-of-bits 8) 8)))))
 
 (defun crc-8 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to hashed 8-bit values.
