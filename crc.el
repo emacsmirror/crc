@@ -1009,6 +1009,68 @@ https://www.etsi.org/deliver/etsi_ts/100900_100999/100909/08.09.00_60/ts_100909v
 
   (crc--general sequence 40 #x0004820009 #x0000000000 nil nil #xFFFFFFFFFF))
 
+(defun crc-64 (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 64-bit values.
+
+Aliases: CRC-64/ECMA-182.
+
+ECMA standard ECMA-182 (December 1992) — ISO/IEC 13421:1993
+--Full mathematical description (Annex B, p.51)
+https://www.ecma-international.org/wp-content/uploads/ECMA-182_1st_edition_december_1992.pdf"
+
+  (crc--general sequence           64  #x42F0E1EBA9EA3693
+                #X0000000000000000 nil nil                #x0000000000000000))
+(defun crc-64/go-iso (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 64-bit values.
+
+The Go Authors, The Go Programming Language, package crc64:
+--Implementation (using constant crc64.ISO)
+https://pkg.go.dev/hash/crc64"
+
+  (crc--general sequence           64  #x000000000000001B
+                #xFFFFFFFFFFFFFFFF   t   t                #xFFFFFFFFFFFFFFFF))
+(defun crc-64/ms (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 64-bit values.
+
+Microsoft Corporation (25 June 2021), [MS-FCIADS]: File Classification
+Infrastructure Alternate Data Stream (ADS) File Format:
+--Full mathematical description (Section 2.8, pp.11–12)
+https://winprotocoldoc.blob.core.windows.net/productionwindowsarchives/MS-FCIADS/%5bMS-FCIADS%5d.pdf"
+
+  (crc--general sequence           64  #x259C84CBA6426349
+                #xFFFFFFFFFFFFFFFF   t   t                #x0000000000000000))
+(defun crc-64/redis (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 64-bit values.
+
+Matt Stancliff et al.  (16 November 2021), Redis module redis/src/crc64.c:
+--Definition: Width, Poly, RefIn, RefOut, XorOut, Check
+--Code: C
+https://github.com/redis/redis/blob/unstable/src/crc64.c"
+
+  (crc--general sequence           64  #xAD93D23594C935A9
+                #x0000000000000000   t   t                #x0000000000000000))
+(defun crc-64/we (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 64-bit values.
+
+Wolfgang Ehrhardt (27 March 2012), CRC/Hash plugin for FAR Manager:
+--Implementation"
+
+  (crc--general sequence           64  #x42F0E1EBA9EA3693
+                #xFFFFFFFFFFFFFFFF nil nil                #xFFFFFFFFFFFFFFFF))
+(defun crc-64/xz (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 64-bit values.
+
+Aliases: CRC-64/GO-ECMA.
+
+AUTOSAR (24 November 2022), AUTOSAR Classic Platform release R22-11,
+Specification of CRC Routines:
+--Comprehensive primer on CRC theory (Section 7.1, pp.19–22)
+--All parameters (Section 7.2.4.1, pp.29–30)
+https://www.autosar.org/fileadmin/user_upload/standards/classic/22-11/AUTOSAR_SWS_CRCLibrary.pdf"
+
+  (crc--general sequence           64  #x42F0E1EBA9EA3693
+                #xFFFFFFFFFFFFFFFF   t   t                #xFFFFFFFFFFFFFFFF))
+
 (provide 'crc)
 
 ;; Local Variables:
