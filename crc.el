@@ -1071,6 +1071,22 @@ https://www.autosar.org/fileadmin/user_upload/standards/classic/22-11/AUTOSAR_SW
   (crc--general sequence           64  #x42F0E1EBA9EA3693
                 #xFFFFFFFFFFFFFFFF   t   t                #xFFFFFFFFFFFFFFFF))
 
+(defun crc-82/darc (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 80-bit values.
+
+ETSI EN 300 751 version 1.2.1 (January 2003):
+--Definition: Width, Poly (Section 11.1, p.67)
+--Definition: RefIn, RefOut (Section 12, pp.69–70)
+https://www.etsi.org/deliver/etsi_en/300700_300799/300751/01.02.01_60/en_300751v010201p.pdf"
+
+  (crc--general sequence
+                82
+                #x0308C0111011401440411
+                #x000000000000000000000
+                  t
+                  t
+                #x000000000000000000000))
+
 (provide 'crc)
 
 ;; Local Variables:
