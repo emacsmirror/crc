@@ -385,6 +385,25 @@ https://downloads.bbc.co.uk/rd/pubs/reports/1982-02.pdf"
 
   (crc--general sequence 13 #x1CF5 #x0000 nil nil #x0000))
 
+(defun crc-14/darc (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 8-bit values.
+
+ETSI EN 300 751 version 1.2.1 (January 2003):
+--Definition: Width, Poly (Section 11.1, p.67)
+--Definition: RefIn, RefOut (Section 12, pp.69–70)
+https://www.etsi.org/deliver/etsi_en/300700_300799/300751/01.02.01_60/en_300751v010201p.pdf"
+
+  (crc--general sequence 14 #x0805 #x0000   t   t #x0000))
+(defun crc-14/gsm (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 8-bit values.
+
+ETSI TS 100 909 version 8.9.0 (January 2005):
+--Full mathematical description (Section 3.9.1.2, p.28 — Section 3.9.5.2, p.40 —
+    Section 3.10.1.2, p.42 — Section 3.10.9.2, p.54)
+https://www.etsi.org/deliver/etsi_ts/100900_100999/100909/08.09.00_60/ts_100909v080900p.pdf"
+
+  (crc--general sequence 14 #x202D #x0000 nil nil #x3fff))
+
 (defun crc-16 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to hashed 16-bit values.
 
