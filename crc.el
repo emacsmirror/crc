@@ -274,6 +274,36 @@ https://books.google.com/books?id=yN5lve5L4vwC&pg=PA223&source=gbs_selected_page
 
   (crc--general sequence 8 #x9B #x00   t   t #x00))
 
+(defun crc-10 (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 8-bit values.
+
+Aliases: CRC-10/ATM, CRC-10/I-610.
+
+ITU-T Recommendation I.610 (February 1999):
+--Full mathematical description (Section 10.1, p.40)
+https://www.itu.int/rec/T-REC-I.610/en"
+
+  (crc--general sequence 10 #x233 #x000 nil nil #x000))
+(defun crc-10/cdma2000 (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 8-bit values.
+
+3rd Generation Partnership Project 2 (3GPP2) (September 2009), Physical layer
+standard for cdma2000 spread spectrum systems, revision E, version 1.0:
+--Definition: Width, Poly (Section 2.1.3.1.4.1.3, p.2-96)
+--Full description (Section 2.1.3.1.4.1, p.2-95)
+--Shift register diagram (Figure 2.1.3.1.4.1.3-1, p.2-96)
+https://web.archive.org/web/20230601141629/https://3gpp2.org/Public_html/Specs/C.S0002-E_v1.0_cdma200_1x_PHY-090925.pdf"
+
+  (crc--general sequence 10 #x3D9 #x3FF nil nil #x000))
+(defun crc-10/gsm (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 8-bit values.
+
+ETSI TS 100 909 version 8.9.0 (January 2005):
+--Full mathematical description (Section 4.7, p.65)
+https://www.etsi.org/deliver/etsi_ts/100900_100999/100909/08.09.00_60/ts_100909v080900p.pdf"
+
+  (crc--general sequence 10 #x175 #x000 nil nil #x3FF))
+
 (defun crc-16 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to hashed 16-bit values.
 
