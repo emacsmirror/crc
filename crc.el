@@ -373,6 +373,18 @@ https://www.etsi.org/deliver/etsi_ts/125200_125299/125212/17.00.00_60/ts_125212v
 
   (crc--general sequence 12 #x80F #x000 nil   t #x000))
 
+(defun crc-13/bbc (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 8-bit values.
+
+S. R. Ely, D. T. Wright, British Broadcasting Corporation (March 1982), L.F.
+Radio-data: specification of the BBC experimental transmissions 1982:
+--Full mathematical description (Section 5.3, pp.4–5)
+--Definition of bit order (Section 5.2, p.4)
+--Worked example (as generator matrix) (Figure 10, p.10)
+https://downloads.bbc.co.uk/rd/pubs/reports/1982-02.pdf"
+
+  (crc--general sequence 13 #x1CF5 #x0000 nil nil #x0000))
+
 (defun crc-16 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to hashed 16-bit values.
 
