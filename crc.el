@@ -45,8 +45,8 @@
   "General Cyclic Redundancy Check application with customizations (via arg.s).
 
 Because there are varying versions of CRC – depending on the Number of Bits,
-Polynomial, Initialization value, Reflect-In and Reflect-Out, and the XOR Output
-–, this function serves to handle any possible iteration that needs to be
+Polynomial, Initialization value, Reflect-Input and Reflect-Output, and the XOR
+Output –, this function serves to handle any possible iteration that needs to be
 computed.
 
 NUMBER-OF-BITS is an integer (such as 8, 16, 32, etc.).
