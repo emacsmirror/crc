@@ -2,4 +2,5 @@
 :PROPERTIES:
   :CUSTOM_ID: emacs-crc-32
 :END:
-An Elisp library implementing the checksum algorithm Cyclic Redundancy Check 32.
+An Elisp library implementing the checksum algorithm Cyclic Redundancy
+Check for various bit-widths.
