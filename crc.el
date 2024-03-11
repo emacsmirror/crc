@@ -608,6 +608,124 @@ ITU-T Recommendation V.42 (March 2002):
 https://www.itu.int/rec/T-REC-V.42/en"
 
   (crc--general sequence 32 #x04C11DB7 #xFFFFFFFF   t   t #xFFFFFFFF))
+(defun crc-32/aixm (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
+
+Aliases: CRC-32Q.
+
+EUROCONTROL (20 March 2006), AIXM Primer 4.5:
+--Definition: Width, Poly, Init, XorOut, RefIn (Section 6.2, pp.23–5)
+--Flowchart (p.24)
+--Code: Java (Appendix B, pp.41–5)
+https://www.aixm.aero/sites/aixm.aero/files/imce/library/aixm_primer_4-5.pdf"
+
+  (crc--general sequence 32 #x814141AB #x00000000 nil nil #x00000000))
+(defun crc-32/autosar (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
+
+AUTOSAR (24 November 2022), AUTOSAR Classic Platform release R22-11,
+Specification of CRC Routines:
+--Comprehensive primer on CRC theory (Section 7.1, pp.19–22)
+--All parameters (Section 7.2.3.2, pp.28–9)
+https://www.autosar.org/fileadmin/user_upload/standards/classic/22-11/AUTOSAR_SWS_CRCLibrary.pdf"
+
+  (crc--general sequence 32 #xF4ACFB13 #xFFFFFFFF   t   t #xFFFFFFFF))
+(defun crc-32/base91-d (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
+
+Aliases: CRC-32D.
+
+Prof.  Philip Koopman (July 2002), \"32-Bit Cyclic Redundancy Codes for Internet
+Applications\", Proceedings of The International Conference on Dependable
+Systems and Networks:
+--Polynomial discovered by Castagnoli; properties confirmed by Koopman
+https://users.ece.cmu.edu/~koopman/networks/dsn02/dsn02_koopman.pdf"
+
+  (crc--general sequence 32 #xA833982B #xFFFFFFFF   t   t #xFFFFFFFF))
+(defun crc-32/bzip2 (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
+
+Aliases: CRC-32/AAL5, CRC-32/DECT-B, B-CRC-32.
+
+ITU-T Recommendation I.363.5 (August 1996):
+--Definition: Residue; full mathematical description (Section 9.2.1.2 (f), p.12)
+https://www.itu.int/rec/T-REC-I.363.5/en"
+
+  (crc--general sequence 32 #x04C11DB7 #xFFFFFFFF nil nil #xFFFFFFFF))
+(defun crc-32/cd-rom-edc (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
+
+ECMA standard ECMA-130, edition 2 (June 1996) — ISO/IEC 10149:1995:
+--Definition: Width, Poly, Refin, RefOut, Residue (Section 14.3, p.16)
+https://www.ecma-international.org/wp-content/uploads/ECMA-130_2nd_edition_june_1996.pdf"
+
+  (crc--general sequence 32 #x8001801B #x00000000   t   t #x00000000))
+(defun crc-32/cksum (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
+
+Aliases: CKSUM, CRC-32/POSIX.
+
+The Open Group (1997), Single Unix Specification, version 2, Commands &
+Utilities Issue 5, Reference Pages: cksum:
+--Full definition (except Check, Residue)
+https://pubs.opengroup.org/onlinepubs/7990989775/xcu/cksum.html"
+
+  (crc--general sequence 32 #x04C11DB7 #x00000000 nil nil #xFFFFFFFF))
+(defun crc-32/iscsi (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
+
+Aliases: CRC-32/BASE91-C, CRC-32/CASTAGNOLI, CRC-32/INTERLAKEN, CRC-32C.
+
+Used by Btrfs, Ext4, iSCSI, and SCTP, amongst others.
+
+IETF RFC 7143 (April 2014):
+--Full definition (except Check) (Section 13.1, pp.230–1)
+https://datatracker.ietf.org/doc/html/rfc7143"
+
+  (crc--general sequence 32 #x1EDC6F41 #xFFFFFFFF   t   t #xFFFFFFFF))
+(defun crc-32/jamcrc (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
+
+Aliases: JAMCRC.
+
+Altera Corporation (April 1999), crc MegaCore Function Data Sheet, version 2:
+--All parameters (except Residue) (p.6)
+https://web.archive.org/web/20070221144121/http://www.msc.rl.ac.uk/europractice/vendors/dscrc.pdf"
+
+  (crc--general sequence 32 #x04C11DB7 #xFFFFFFFF   t   t #x00000000))
+(defun crc-32/mef (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
+
+Mayo Foundation (19 February 2016), Multiscale Electrophysiology File Format
+Version 3.0 (MEF3) specification:
+--Definition: Init (p.90), Width (p.91)
+--Citation for Poly: \"Koopman\" (p.91)
+https://github.com/msel-source/meflib/raw/multiplatform/MEF%203%20Specification.pdf"
+
+  (crc--general sequence 32 #x741B8CD7 #xFFFFFFFF   t   t #x00000000))
+(defun crc-32/mpeg-2 (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
+
+ISO/IEC 13818-1:2000 — ITU-T Recommendation H.222.0 (February 2000):
+--Definition: Width, Poly, Init, RefIn, RefOut, Residue (Annex A, p.97)
+--CRC checking algorithm (Annex A, p.97)
+--Partial shift register diagram (Annex A, p.97)"
+
+  (crc--general sequence 32 #x04C11DB7 #xFFFFFFFF nil nil #x00000000))
+(defun crc-32/sata (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values."
+
+  (crc--general sequence 32 #x04C11DB7 #x52325032 nil nil #x00000000))
+(defun crc-32/xfer (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to hashed 32-bit values.
+
+Aliases: XFER.
+
+Jon Welch (12 January 2007), XFER in C, version 5.1a:
+--Implementation
+https://www.g7jjf.com/bbc.htm"
+
+  (crc--general sequence 32 #x000000AF #x00000000 nil nil #x00000000))
 
 (provide 'crc)
 
