@@ -755,6 +755,12 @@ ITU-T Recommendation V.41 (November 1988):
 https://www.itu.int/rec/T-REC-V.41/en"
 
   (crc--general sequence 16 #x1021 #x0000 nil nil #x0000))
+(defun crc-16/xmodem-2 (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
+
+https://www.lddgo.net/en/encrypt/crc"
+
+  (crc--general sequence 16 #x8408 #x0000   t   t #x0000))
 
 (defun crc-17/can-fd (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
