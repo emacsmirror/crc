@@ -118,6 +118,9 @@
   (should (= (crc-16/usb               "123456789") #xB4C8))
   (should (= (crc-16/xmodem            "123456789") #x31C3)))
 
+(ert-deftest crc-17-tests ()
+  (should (= (crc-17/can-fd "123456789") #x4F03)))
+
 (provide 'crc-tests)
 
 ;; Local Variables:
