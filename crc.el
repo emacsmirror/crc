@@ -875,7 +875,7 @@ Philips 37PF9731 LCD TV:
 \"gigirex\" (1 March 2012), Computer Interfacing Forum topic 1774:
 https://web.archive.org/web/20181116141051/https://www.lammertbies.nl/forum/viewtopic.php?t=1774"
 
-  (crc--general sequence 30 #x04C11DB7 #x7FFFFFFF nil nil #x7FFFFFFF))
+  (crc--general sequence 31 #x04C11DB7 #x7FFFFFFF nil nil #x7FFFFFFF))
 
 (defun crc-32 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 32-bit value.
