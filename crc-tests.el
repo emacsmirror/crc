@@ -155,6 +155,9 @@
   (should (= (crc-32/sata       "123456789") #xCF72AFE8))
   (should (= (crc-32/xfer       "123456789") #xBD0BE338)))
 
+(ert-deftest crc-40-tests ()
+  (should (= (crc-40/gsm "123456789") #xD4164FC646)))
+
 (provide 'crc-tests)
 
 ;; Local Variables:
