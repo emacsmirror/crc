@@ -69,7 +69,10 @@
   (should (= (crc-11/umts "123456789") #x61)))
 
 (ert-deftest crc-12-tests ()
-  (should (= (crc-12/dect     "123456789") #x5B)))
+  (should (= (crc-12/cdma2000 "123456789") #x4D))
+  (should (= (crc-12/dect     "123456789") #x5B))
+  (should (= (crc-12/gsm      "123456789") #x34))
+  (should (= (crc-12/umts     "123456789") #xAF)))
 
 (provide 'crc-tests)
 
