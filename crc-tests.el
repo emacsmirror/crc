@@ -158,6 +158,12 @@
 (ert-deftest crc-40-tests ()
   (should (= (crc-40/gsm "123456789") #xD4164FC646)))
 
+(ert-deftest crc-64-tests ()
+  (should (= (crc-64        "123456789") #x6C40DF5F0B497347))
+  (should (= (crc-64/go-iso "123456789") #xB90956C775A41001))
+  (should (= (crc-64/we     "123456789") #x62EC59E3F1A4F00A))
+  (should (= (crc-64/xz     "123456789") #x995DC9BBDF1939FA)))
+
 (provide 'crc-tests)
 
 ;; Local Variables:
