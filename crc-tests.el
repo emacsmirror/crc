@@ -137,6 +137,9 @@
 (ert-deftest crc-30-tests ()
   (should (= (crc-30/cdma "123456789") #xC34ABF)))
 
+(ert-deftest crc-31-tests ()
+  (should (= (crc-31/philips "123456789") #xE9E46C)))
+
 (provide 'crc-tests)
 
 ;; Local Variables:
