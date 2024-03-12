@@ -161,6 +161,8 @@
 (ert-deftest crc-64-tests ()
   (should (= (crc-64        "123456789") #x6C40DF5F0B497347))
   (should (= (crc-64/go-iso "123456789") #xB90956C775A41001))
+  (should (= (crc-64/ms     "123456789") #x75D4B74F024ECEEA))
+  (should (= (crc-64/redis  "123456789") #xE9C6D914C4B8D9CA))
   (should (= (crc-64/we     "123456789") #x62EC59E3F1A4F00A))
   (should (= (crc-64/xz     "123456789") #x995DC9BBDF1939FA)))
 
