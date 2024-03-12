@@ -125,7 +125,14 @@
   (should (= (crc-21/can-fd "123456789") #xD841)))
 
 (ert-deftest crc-24-tests ()
-  (should (= (crc-24            "123456789") #x21CF02)))
+  (should (= (crc-24            "123456789") #x21CF02))
+  (should (= (crc-24/ble        "123456789") #xC25A56))
+  (should (= (crc-24/flexray-a  "123456789") #x7979BD))
+  (should (= (crc-24/flexray-b  "123456789") #x1F23B8))
+  (should (= (crc-24/interlaken "123456789") #xB4F3E6))
+  (should (= (crc-24/lte-a      "123456789") #xCDE703))
+  (should (= (crc-24/lte-b      "123456789") #x23EF52))
+  (should (= (crc-24/os-9       "123456789") #x200FA5)))
 
 (provide 'crc-tests)
 
