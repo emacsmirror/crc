@@ -124,6 +124,9 @@
 (ert-deftest crc-21-tests ()
   (should (= (crc-21/can-fd "123456789") #xD841)))
 
+(ert-deftest crc-24-tests ()
+  (should (= (crc-24            "123456789") #x21CF02)))
+
 (provide 'crc-tests)
 
 ;; Local Variables:
