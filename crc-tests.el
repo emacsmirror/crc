@@ -64,6 +64,9 @@
   (should (= (crc-10/cdma2000 "123456789") #x33))
   (should (= (crc-10/gsm      "123456789") #x2A)))
 
+(ert-deftest crc-11-tests ()
+  (should (= (crc-11      "123456789") #xA3)))
+
 (provide 'crc-tests)
 
 ;; Local Variables:
