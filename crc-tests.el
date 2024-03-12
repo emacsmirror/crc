@@ -140,6 +140,18 @@
 (ert-deftest crc-31-tests ()
   (should (= (crc-31/philips "123456789") #xE9E46C)))
 
+(ert-deftest crc-32-tests ()
+  (should (= (crc-32            "123456789") #xCBF43926))
+  (should (= (crc-32/aixm       "123456789") #x3010BF7F))
+  (should (= (crc-32/base91-d   "123456789") #x87315576))
+  (should (= (crc-32/bzip2      "123456789") #xFC891918))
+  (should (= (crc-32/cksum      "123456789") #x765E7680))
+  (should (= (crc-32/iscsi      "123456789") #xE3069283))
+  (should (= (crc-32/jamcrc     "123456789") #x340BC6D9))
+  (should (= (crc-32/mpeg-2     "123456789") #x0376E6E7))
+  (should (= (crc-32/sata       "123456789") #xCF72AFE8))
+  (should (= (crc-32/xfer       "123456789") #xBD0BE338)))
+
 (provide 'crc-tests)
 
 ;; Local Variables:
