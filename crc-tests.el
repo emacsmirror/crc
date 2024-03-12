@@ -116,7 +116,8 @@
   (should (= (crc-16/tms37157          "123456789") #x26B1))
   (should (= (crc-16/umts              "123456789") #xFEE8))
   (should (= (crc-16/usb               "123456789") #xB4C8))
-  (should (= (crc-16/xmodem            "123456789") #x31C3)))
+  (should (= (crc-16/xmodem            "123456789") #x31C3))
+  (should (= (crc-16/xmodem-2          "123456789") #x0C73)))
 
 (ert-deftest crc-17-tests ()
   (should (= (crc-17/can-fd "123456789") #x4F03)))
