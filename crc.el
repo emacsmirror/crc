@@ -98,6 +98,8 @@ https://web.archive.org/web/20230605175600/http://www.smbus.org/specs/smbus20.pd
 (defun crc-8/autosar (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
+Aliases: CRC-8/8H2F.
+
 AUTOSAR (24 November 2022), AUTOSAR Classic Platform release R22-11:
 https://www.autosar.org/fileadmin/user_upload/standards/classic/22-11/AUTOSAR_SWS_CRCLibrary.pdf"
 
@@ -144,6 +146,8 @@ https://tech.ebu.ch/docs/tech/tech3250.pdf"
   (crc--general sequence 8 #x1D #xFF   t   t #x00))
 (defun crc-8/gsm-a (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
+
+Aliases: CRC-8/SAE-J1850-ZERO.
 
 ETSI TS 100 909 version 8.9.0 (January 2005) (Full mathematical description in
 Section 3.1.1.1, pp.17–18):
