@@ -77,6 +77,9 @@
 (ert-deftest crc-13-tests ()
   (should (= (crc-13/bbc "123456789") #xFA)))
 
+(ert-deftest crc-14-tests ()
+  (should (= (crc-14/darc "123456789") #x2D)))
+
 (provide 'crc-tests)
 
 ;; Local Variables:
