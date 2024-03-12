@@ -166,6 +166,9 @@
   (should (= (crc-64/we     "123456789") #x62EC59E3F1A4F00A))
   (should (= (crc-64/xz     "123456789") #x995DC9BBDF1939FA)))
 
+(ert-deftest crc-82-tests ()
+  (should (= (crc-82/darc "123456789") #x9EA83F625023801FD612)))
+
 (provide 'crc-tests)
 
 ;; Local Variables:
