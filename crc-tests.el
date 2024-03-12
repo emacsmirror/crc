@@ -151,6 +151,7 @@
   (should (= (crc-32/cksum      "123456789") #x765E7680))
   (should (= (crc-32/iscsi      "123456789") #xE3069283))
   (should (= (crc-32/jamcrc     "123456789") #x340BC6D9))
+  (should (= (crc-32/koopman    "123456789") #x2D3DD0AE))
   (should (= (crc-32/mef        "123456789") #xD2C22F51))
   (should (= (crc-32/mpeg-2     "123456789") #x0376E6E7))
   (should (= (crc-32/sata       "123456789") #xCF72AFE8))

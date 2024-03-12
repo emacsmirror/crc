@@ -978,6 +978,12 @@ Altera Corporation (April 1999), crc MegaCore Function Data Sheet, version 2:
 https://web.archive.org/web/20070221144121/http://www.msc.rl.ac.uk/europractice/vendors/dscrc.pdf"
 
   (crc--general sequence 32 #x04C11DB7 #xFFFFFFFF   t   t #x00000000))
+(defun crc-32/koopman (sequence)
+  "Convert a SEQUENCE (a list, vector, or string) to a hashed 32-bit value.
+
+https://www.lddgo.net/en/encrypt/crc"
+
+  (crc--general sequence 32 #x741B8CD7 #xFFFFFFFF   t   t #xFFFFFFFF))
 (defun crc-32/mef (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 32-bit value.
 
