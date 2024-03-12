@@ -37,6 +37,19 @@
   (should (= (crc--reverse-bits #b10100110 2) #b01))
   (should (= (crc--reverse-bits #b10100110 1) #b0)))
 
+(ert-deftest crc-8-tests ()
+  (should (= (crc-8            "123456789") #xF4))
+  (should (= (crc-8/autosar    "123456789") #xDF))
+  (should (= (crc-8/cdma2000   "123456789") #xDA))
+  (should (= (crc-8/darc       "123456789") #x15))
+  (should (= (crc-8/dvb-s2     "123456789") #xBC))
+  (should (= (crc-8/ebu        "123456789") #x97))
+  (should (= (crc-8/i-code     "123456789") #x7E))
+  (should (= (crc-8/itu        "123456789") #xA1))
+  (should (= (crc-8/maxim      "123456789") #xA1))
+  (should (= (crc-8/rohc       "123456789") #xD0))
+  (should (= (crc-8/sae-j1850  "123456789") #x4B))
+  (should (= (crc-8/wcdma      "123456789") #x25)))
 
 (provide 'crc-tests)
 
