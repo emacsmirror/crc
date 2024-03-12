@@ -65,7 +65,8 @@
   (should (= (crc-10/gsm      "123456789") #x2A)))
 
 (ert-deftest crc-11-tests ()
-  (should (= (crc-11      "123456789") #xA3)))
+  (should (= (crc-11      "123456789") #xA3))
+  (should (= (crc-11/umts "123456789") #x61)))
 
 (provide 'crc-tests)
 
