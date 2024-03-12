@@ -27,6 +27,15 @@
 ;;; Code:
 (require 'ert)
 
+(ert-deftest crc--reverse-bits-test ()
+  (should (= (crc--reverse-bits #b10100110 8) #b01100101))
+  (should (= (crc--reverse-bits #b10100110 7) #b0110010))
+  (should (= (crc--reverse-bits #b10100110 6) #b011001))
+  (should (= (crc--reverse-bits #b10100110 5) #b01100))
+  (should (= (crc--reverse-bits #b10100110 4) #b0110))
+  (should (= (crc--reverse-bits #b10100110 3) #b011))
+  (should (= (crc--reverse-bits #b10100110 2) #b01))
+  (should (= (crc--reverse-bits #b10100110 1) #b0)))
 
 
 (provide 'crc-tests)
