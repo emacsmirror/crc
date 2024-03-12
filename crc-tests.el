@@ -74,6 +74,9 @@
   (should (= (crc-12/gsm      "123456789") #x34))
   (should (= (crc-12/umts     "123456789") #xAF)))
 
+(ert-deftest crc-13-tests ()
+  (should (= (crc-13/bbc "123456789") #xFA)))
+
 (provide 'crc-tests)
 
 ;; Local Variables:
