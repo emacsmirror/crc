@@ -134,6 +134,9 @@
   (should (= (crc-24/lte-b      "123456789") #x23EF52))
   (should (= (crc-24/os-9       "123456789") #x200FA5)))
 
+(ert-deftest crc-30-tests ()
+  (should (= (crc-30/cdma "123456789") #xC34ABF)))
+
 (provide 'crc-tests)
 
 ;; Local Variables:
