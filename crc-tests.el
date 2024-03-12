@@ -81,6 +81,9 @@
   (should (= (crc-14/darc "123456789") #x2D))
   (should (= (crc-14/gsm  "123456789") #xAE)))
 
+(ert-deftest crc-15-tests ()
+  (should (= (crc-15         "123456789") #x9E)))
+
 (provide 'crc-tests)
 
 ;; Local Variables:
