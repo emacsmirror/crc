@@ -78,7 +78,8 @@
   (should (= (crc-13/bbc "123456789") #xFA)))
 
 (ert-deftest crc-14-tests ()
-  (should (= (crc-14/darc "123456789") #x2D)))
+  (should (= (crc-14/darc "123456789") #x2D))
+  (should (= (crc-14/gsm  "123456789") #xAE)))
 
 (provide 'crc-tests)
 
