@@ -59,6 +59,9 @@
   (should (= (crc-8/sae-j1850  "123456789") #x4B))
   (should (= (crc-8/wcdma      "123456789") #x25)))
 
+(ert-deftest crc-10-tests ()
+  (should (= (crc-10          "123456789") #x99)))
+
 (provide 'crc-tests)
 
 ;; Local Variables:
