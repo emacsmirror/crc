@@ -3,6 +3,7 @@
 ;; Copyright (C) 2024 Free Software Foundation, Inc.
 
 ;; Author: Wamm K. D. <jaft.r@outlook.com>
+;; Maintainer: Wamm K. D. <jaft.r@outlook.com>
 ;; URL: https://codeberg.org/WammKD/Emacs-CRC
 ;; Package-Requires: ((emacs "25.1"))
 ;; Keywords: lisp, checksum, algorithms

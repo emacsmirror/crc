@@ -3,6 +3,7 @@
 ;; Copyright (C) 2024 Free Software Foundation, Inc.
 
 ;; Author: Wamm K. D. <jaft.r@outlook.com>
+;; Maintainer: Wamm K. D. <jaft.r@outlook.com>
 ;; Keywords: tests
 
 ;; This file is part of GNU Emacs.
