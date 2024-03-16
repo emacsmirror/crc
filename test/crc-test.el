@@ -181,6 +181,10 @@
 (ert-deftest crc-82-tests ()
   (should (= (crc-82/darc crc-test--string) #x9EA83F625023801FD612)))
 
+
+
+(ert t)
+
 (provide 'crc-test)
 
 ;; Local Variables:
