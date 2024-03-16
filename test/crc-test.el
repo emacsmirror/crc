@@ -1,4 +1,4 @@
-;;; crc-tests.el --- Cyclic Redundancy Check's tests  -*- lexical-binding: t -*-
+;;; crc-test.el --- Cyclic Redundancy Check's tests  -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2024  Jean Libète
 
@@ -171,9 +171,9 @@
 (ert-deftest crc-82-tests ()
   (should (= (crc-82/darc "123456789") #x9EA83F625023801FD612)))
 
-(provide 'crc-tests)
+(provide 'crc-test)
 
 ;; Local Variables:
 ;; indent-tabs-mode: nil
 ;; End:
-;;; crc-tests.el ends here
+;;; crc-test.el ends here
