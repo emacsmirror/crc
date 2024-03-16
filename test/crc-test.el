@@ -25,7 +25,15 @@
 ;; See crc.el for more details.
 
 ;;; Code:
-(require 'ert)
+(let ((load-path (append (mapcar (lambda (fragment)
+                                   (concat (if load-file-name
+                                               (file-name-directory load-file-name)
+                                             default-directory)
+                                           fragment))
+                                 '("." ".."))
+                         load-path)))
+  (require 'crc)
+  (require 'ert))
 
 (ert-deftest crc--reverse-bits-test ()
   (should (= (crc--reverse-bits #b10100110 8) #b01100101))
