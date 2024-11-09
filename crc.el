@@ -42,6 +42,10 @@
                                      (logior result (expt 2 (- maxindex i)))))
                 (number-sequence 0 maxindex)
                 0)))
+(defun crc--truncate-by-bits (integer-to-truncate bits-to-truncate-by)
+  ""
+
+  (logand integer-to-truncate (1- (expt 2 (* (/ bits-to-truncate-by 8) 8)))))
 (defun crc--general (sequence number-of-bits polynomial init ref-in ref-out xor-out)
   "General Cyclic Redundancy Check application with customizations (via arg.s).
 
@@ -61,7 +65,7 @@ REF-IN and REF-OUT are booleans.
 XOR-OUT is a integer."
 
   (let ((calc-bitwise-and (lambda (bits) (1- (expt 2 (* (/ bits 8) 8))))))
-    (logand
+    (crc--truncate-by-bits
       (logxor (funcall
                 (if ref-out #'crc--reverse-bits (lambda (n _b) n))
                 (seq-reduce
@@ -74,7 +78,7 @@ XOR-OUT is a integer."
                                         shift1
                                       (logxor shift1 polynomial))))
                                 (number-sequence 0 7)
-                                (logand
+                                (crc--truncate-by-bits
                                   (logxor res1
                                           (if ref-in
                                               (crc--reverse-bits byte number-of-bits)
@@ -82,12 +86,12 @@ XOR-OUT is a integer."
                                   ;; long sequences cause an overflow error by
                                   ;; the `ash' for 'shift1'; so truncate enough
                                   ;; to not do that but, also, not lose data
-                                  (funcall calc-bitwise-and (* number-of-bits 2)))))
+                                  (* number-of-bits 2))))
                   sequence
                   init)
                 number-of-bits)
               xor-out)
-      (funcall calc-bitwise-and number-of-bits))))
+      number-of-bits)))
 
 (defun crc-8 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
