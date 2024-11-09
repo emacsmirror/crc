@@ -35,6 +35,7 @@
 
 (defun crc--reverse-bits (integer number-of-bits)
   "Reverse the bits of INTEGER, starting from the right, by the NUMBER-OF-BITS."
+  (declare (pure t) (side-effect-free t))
 
   (let ((maxindex (1- number-of-bits)) (result 0))
     (dotimes (i (1+ maxindex))
@@ -64,6 +65,7 @@ bytes that is possible while ensuring it has at least the number of bits
 specified by BITS-TO-TRUNCATE-BY.
 
 Both INTEGER-TO-TRUNCATE and BITS-TO-TRUNCATE-BY are integers."
+  (declare (pure t) (side-effect-free t))
 
   (logand integer-to-truncate (1- (expt 2 (* (/ bits-to-truncate-by 8) 8)))))
 (defun crc--general (sequence number-of-bits polynomial init ref-in ref-out xor-out)
