@@ -105,7 +105,9 @@ XOR-OUT is a integer."
                                    ;; the `ash' for 'shift1'; so truncate enough
                                    ;; to not do that but, also, not lose data
                                    (* number-of-bits 2))))
-                   sequence
+                   (if (stringp sequence)
+                       (encode-coding-string sequence 'binary)
+                     sequence)
                    init)))
     (when ref-out (setq reduced (crc--reverse-bits reduced number-of-bits)))
 
