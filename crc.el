@@ -36,12 +36,13 @@
 (defun crc--reverse-bits (integer number-of-bits)
   "Reverse the bits of INTEGER, starting from the right, by the NUMBER-OF-BITS."
 
-  (let ((maxindex (1- number-of-bits)))
-    (seq-reduce (lambda (result i) (if (zerop (logand integer (expt 2 i)))
-                                       result
-                                     (logior result (expt 2 (- maxindex i)))))
-                (number-sequence 0 maxindex)
-                0)))
+  (let ((maxindex (1- number-of-bits)) (result 0))
+    (dotimes (i (1+ maxindex))
+      (setq result (if (zerop (logand integer (expt 2 i)))
+                       result
+                     (logior result (expt 2 (- maxindex i))))))
+
+    result))
 (defun crc--truncate-by-bits (integer-to-truncate bits-to-truncate-by)
   "Truncate a number to a measure of bytes using a number of bits.
 
