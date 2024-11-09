@@ -43,7 +43,26 @@
                 (number-sequence 0 maxindex)
                 0)))
 (defun crc--truncate-by-bits (integer-to-truncate bits-to-truncate-by)
-  ""
+  "Truncate a number to a measure of bytes using a number of bits.
+
+The reason bits are used to determine truncation amount is that some General
+Cyclic Redundancy Checks use a bit amount that's not a full byte(s).
+
+Leaving calculating the number of bytes to truncate a number to with this
+function makes it trivial to just pass the number of bits a General Cyclic
+Redundancy Check is handling to this function.
+
+BITS-TO-TRUNCATE-BY is computed to a factor of 8 bits so that the resulting
+number is the mininimal number of non-fractional bytes that the specified
+number of bits could be (with 1s in every place-value of the computed number
+when said number is in binary form).
+
+INTEGER-TO-TRUNCATE is, then, bitwise-and–ed against this computed number so
+that INTEGER-TO-TRUNCATE is truncated to the smallest number of non-fractional
+bytes that is possible while ensuring it has at least the number of bits
+specified by BITS-TO-TRUNCATE-BY.
+
+Both INTEGER-TO-TRUNCATE and BITS-TO-TRUNCATE-BY are integers."
 
   (logand integer-to-truncate (1- (expt 2 (* (/ bits-to-truncate-by 8) 8)))))
 (defun crc--general (sequence number-of-bits polynomial init ref-in ref-out xor-out)
