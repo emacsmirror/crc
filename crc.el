@@ -83,34 +83,33 @@ REF-IN and REF-OUT are booleans.
 
 XOR-OUT is a integer."
 
-  (let ((calc-bitwise-and (lambda (bits) (1- (expt 2 (* (/ bits 8) 8))))))
-    (crc--truncate-by-bits
-      (logxor (funcall
-                (if ref-out #'crc--reverse-bits (lambda (n _b) n))
-                (seq-reduce
-                  (lambda (res1 byte)
-                    (seq-reduce (lambda (res2 _i)
-                                  (let ((shift1 (ash res2 1)))
-                                    (if (zerop (logand res2
-                                                       (expt 2
-                                                             (1- number-of-bits))))
-                                        shift1
-                                      (logxor shift1 polynomial))))
-                                (number-sequence 0 7)
-                                (crc--truncate-by-bits
-                                  (logxor res1
-                                          (if ref-in
-                                              (crc--reverse-bits byte number-of-bits)
-                                            (ash byte (- number-of-bits 8))))
-                                  ;; long sequences cause an overflow error by
-                                  ;; the `ash' for 'shift1'; so truncate enough
-                                  ;; to not do that but, also, not lose data
-                                  (* number-of-bits 2))))
-                  sequence
-                  init)
-                number-of-bits)
-              xor-out)
-      number-of-bits)))
+  (crc--truncate-by-bits
+    (logxor (funcall
+              (if ref-out #'crc--reverse-bits (lambda (n _b) n))
+              (seq-reduce
+                (lambda (res1 byte)
+                  (seq-reduce (lambda (res2 _i)
+                                (let ((shift1 (ash res2 1)))
+                                  (if (zerop (logand res2
+                                                     (expt 2
+                                                           (1- number-of-bits))))
+                                      shift1
+                                    (logxor shift1 polynomial))))
+                              (number-sequence 0 7)
+                              (crc--truncate-by-bits
+                                (logxor res1
+                                        (if ref-in
+                                            (crc--reverse-bits byte number-of-bits)
+                                          (ash byte (- number-of-bits 8))))
+                                ;; long sequences cause an overflow error by
+                                ;; the `ash' for 'shift1'; so truncate enough
+                                ;; to not do that but, also, not lose data
+                                (* number-of-bits 2))))
+                sequence
+                init)
+              number-of-bits)
+            xor-out)
+    number-of-bits))
 
 (defun crc-8 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
