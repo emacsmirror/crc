@@ -24,7 +24,7 @@
 ;; This file is part of CRC, the Elisp Cyclic Redundancy Check library.
 ;; See crc.el for more details.
 
-;; Run tests with `emacs -q -l crc-test.el'.
+;; Run tests with `emacs -q -batch -l crc-test.el -f ert-run-tests-batch-and-exit'.
 
 ;;; Code:
 (let ((load-path (append (mapcar (lambda (fragment)
