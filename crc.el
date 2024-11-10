@@ -68,6 +68,17 @@ Both INTEGER-TO-TRUNCATE and BITS-TO-TRUNCATE-BY are integers."
   (declare (pure t) (side-effect-free t))
 
   (logand integer-to-truncate (1- (expt 2 (* (/ bits-to-truncate-by 8) 8)))))
+(defun crc--general-reducer-inner (number-of-bits polynomial)
+  "Returns the logic for the inner `seq-reduce' of `crc--general' as a `lambda'.
+
+NUMBER-OF-BITS and POLYNOMIAL are integers."
+  (declare (pure t) (side-effect-free t))
+
+  (lambda (result _bit-index)
+    (let ((shift1 (ash result 1)))
+      (if (zerop (logand result (expt 2 (1- number-of-bits))))
+          shift1
+        (logxor shift1 polynomial)))))
 (defun crc--general (sequence number-of-bits polynomial init ref-in ref-out xor-out)
   "General Cyclic Redundancy Check application with customizations (via arg.s).
 
@@ -88,13 +99,8 @@ XOR-OUT is a integer."
 
   (let ((reduced (seq-reduce
                    (lambda (res1 byte)
-                     (seq-reduce (lambda (res2 _i)
-                                   (let ((shift1 (ash res2 1)))
-                                     (if (zerop (logand res2
-                                                        (expt 2
-                                                              (1- number-of-bits))))
-                                         shift1
-                                       (logxor shift1 polynomial))))
+                     (seq-reduce (crc--general-reducer-inner number-of-bits
+                                                             polynomial)
                                  (number-sequence 0 7)
                                  (crc--truncate-by-bits
                                    (logxor res1
