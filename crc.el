@@ -81,19 +81,19 @@ NUMBER-OF-BITS and POLYNOMIAL are integers."
       (if (zerop (logand result (expt 2 (1- number-of-bits))))
           shift1
         (logxor shift1 polynomial)))))
-(defun crc--general-reducer-outer (number-of-bits polynomial ref-in)
+(defun crc--general-reducer-outer (number-of-bits polynomial ref-in-p)
   "Returns the logic for the outer `seq-reduce' of `crc--general' as a `lambda'.
 
 NUMBER-OF-BITS and POLYNOMIAL are integers.
 
-REF-IN is a boolean."
+REF-IN-P is a boolean."
   (declare (pure t) (side-effect-free t))
 
   (lambda (result byte-of-sequence)
     (seq-reduce (crc--general-reducer-inner number-of-bits polynomial)
                 (number-sequence 0 7)
                 (crc--truncate-by-bits (logxor result
-                                               (if ref-in
+                                               (if ref-in-p
                                                    (crc--reverse-bits byte-of-sequence
                                                                       number-of-bits)
                                                  (ash byte-of-sequence
@@ -104,7 +104,8 @@ REF-IN is a boolean."
                                        ;; truncate enough to not do that but,
                                        ;; also, not lose data
                                        (* number-of-bits 2)))))
-(defun crc--general (sequence number-of-bits polynomial init ref-in ref-out xor-out)
+(defun crc--general (sequence number-of-bits polynomial init
+                              ref-in-p       ref-out-p  xor-out)
   "General Cyclic Redundancy Check application with customizations (via arg.s).
 
 Because there are varying versions of CRC – depending on the Number of Bits,
@@ -118,19 +119,19 @@ SEQUENCE is a list, vector, or string.
 
 POLYNOMIAL and INIT are integers.
 
-REF-IN and REF-OUT are booleans.
+REF-IN-P and REF-OUT-P are booleans.
 
 XOR-OUT is a integer."
   (declare (pure t) (side-effect-free t))
 
   (let ((reduced (seq-reduce (crc--general-reducer-outer number-of-bits
                                                          polynomial
-                                                         ref-in)
+                                                         ref-in-p)
                              (if (stringp sequence)
                                  (encode-coding-string sequence 'binary)
                                sequence)
                              init)))
-    (when ref-out (setq reduced (crc--reverse-bits reduced number-of-bits)))
+    (when ref-out-p (setq reduced (crc--reverse-bits reduced number-of-bits)))
 
     (crc--truncate-by-bits (logxor reduced xor-out) number-of-bits)))
 
