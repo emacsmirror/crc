@@ -116,3 +116,17 @@ or string.
 | crc-64/we                |                                                                                       | #x42F0E1EBA9EA3693      | #xFFFFFFFFFFFFFFFF      | false         | false          | #xFFFFFFFFFFFFFFFF      |
 | crc-64/xz                | CRC-64/GO-ECMA                                                                        | #x42F0E1EBA9EA3693      | #xFFFFFFFFFFFFFFFF      | true          | true           | #xFFFFFFFFFFFFFFFF      |
 | crc-82/darc              |                                                                                       | #x0308C0111011401440411 | #x000000000000000000000 | true          | true           | #x000000000000000000000 |
+
+** Running Tests
+:PROPERTIES:
+  :CUSTOM_ID: running-tests
+:END:
+Tests can be found in the [[./test/crc-test.el][crc-test.el]] file.
+
+To run the tests, simply execute ~emacs -q -batch -l
+./test/crc-test.el -f ert-run-tests-batch-and-exit~ from the root
+directory of the project.
+
+The file takes care to add the CRC library to Emacs's load path and
+load the library so all you have to worry about is having Emacs
+installed and running the necessary command.
