@@ -44,6 +44,7 @@
                      (logior result (expt 2 (- maxindex i))))))
 
     result))
+
 (defun crc--truncate-by-bits (integer-to-truncate bits-to-truncate-by)
   "Truncate a number to a measure of bytes using a number of bits.
 
@@ -68,6 +69,7 @@ Both INTEGER-TO-TRUNCATE and BITS-TO-TRUNCATE-BY are integers."
   (declare (pure t) (side-effect-free t))
 
   (logand integer-to-truncate (1- (expt 2 (* (/ bits-to-truncate-by 8) 8)))))
+
 (defun crc--general-reducer-inner (number-of-bits polynomial)
   "Returns the logic for the inner `seq-reduce' of `crc--general' as a `lambda'.
 
