@@ -79,6 +79,28 @@ NUMBER-OF-BITS and POLYNOMIAL are integers."
       (if (zerop (logand result (expt 2 (1- number-of-bits))))
           shift1
         (logxor shift1 polynomial)))))
+(defun crc--general-reducer-outer (number-of-bits polynomial ref-in)
+  "Returns the logic for the outer `seq-reduce' of `crc--general' as a `lambda'.
+
+NUMBER-OF-BITS and POLYNOMIAL are integers.
+
+REF-IN is a boolean."
+  (declare (pure t) (side-effect-free t))
+
+  (lambda (result byte)
+    (seq-reduce (crc--general-reducer-inner number-of-bits polynomial)
+                (number-sequence 0 7)
+                (crc--truncate-by-bits (logxor result
+                                               (if ref-in
+                                                   (crc--reverse-bits byte
+                                                                      number-of-bits)
+                                                 (ash byte (- number-of-bits 8))))
+                                       ;; long sequences cause an overflow error
+                                       ;; by the `ash' for 'shift1' of
+                                       ;; `crc--general-reducer-inner'; so
+                                       ;; truncate enough to not do that but,
+                                       ;; also, not lose data
+                                       (* number-of-bits 2)))))
 (defun crc--general (sequence number-of-bits polynomial init ref-in ref-out xor-out)
   "General Cyclic Redundancy Check application with customizations (via arg.s).
 
@@ -97,24 +119,13 @@ REF-IN and REF-OUT are booleans.
 
 XOR-OUT is a integer."
 
-  (let ((reduced (seq-reduce
-                   (lambda (res1 byte)
-                     (seq-reduce (crc--general-reducer-inner number-of-bits
-                                                             polynomial)
-                                 (number-sequence 0 7)
-                                 (crc--truncate-by-bits
-                                   (logxor res1
-                                           (if ref-in
-                                               (crc--reverse-bits byte number-of-bits)
-                                             (ash byte (- number-of-bits 8))))
-                                   ;; long sequences cause an overflow error by
-                                   ;; the `ash' for 'shift1'; so truncate enough
-                                   ;; to not do that but, also, not lose data
-                                   (* number-of-bits 2))))
-                   (if (stringp sequence)
-                       (encode-coding-string sequence 'binary)
-                     sequence)
-                   init)))
+  (let ((reduced (seq-reduce (crc--general-reducer-outer number-of-bits
+                                                         polynomial
+                                                         ref-in)
+                             (if (stringp sequence)
+                                 (encode-coding-string sequence 'binary)
+                               sequence)
+                             init)))
     (when ref-out (setq reduced (crc--reverse-bits reduced number-of-bits)))
 
     (crc--truncate-by-bits (logxor reduced xor-out) number-of-bits)))
