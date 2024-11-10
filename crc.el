@@ -87,14 +87,15 @@ NUMBER-OF-BITS and POLYNOMIAL are integers.
 REF-IN is a boolean."
   (declare (pure t) (side-effect-free t))
 
-  (lambda (result byte)
+  (lambda (result byte-of-sequence)
     (seq-reduce (crc--general-reducer-inner number-of-bits polynomial)
                 (number-sequence 0 7)
                 (crc--truncate-by-bits (logxor result
                                                (if ref-in
-                                                   (crc--reverse-bits byte
+                                                   (crc--reverse-bits byte-of-sequence
                                                                       number-of-bits)
-                                                 (ash byte (- number-of-bits 8))))
+                                                 (ash byte-of-sequence
+                                                      (- number-of-bits 8))))
                                        ;; long sequences cause an overflow error
                                        ;; by the `ash' for 'shift1' of
                                        ;; `crc--general-reducer-inner'; so
