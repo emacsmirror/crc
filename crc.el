@@ -119,6 +119,7 @@ POLYNOMIAL and INIT are integers.
 REF-IN and REF-OUT are booleans.
 
 XOR-OUT is a integer."
+  (declare (pure t) (side-effect-free t))
 
   (let ((reduced (seq-reduce (crc--general-reducer-outer number-of-bits
                                                          polynomial
