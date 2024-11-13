@@ -146,7 +146,7 @@ Bus (SMBus) Specification, version 2.0:
 https://web.archive.org/web/20230605175600/http://www.smbus.org/specs/smbus20.pdf"
 
   (crc--general sequence 8 #x07 #x00 nil nil #x00))
-(defun crc-8/autosar (sequence)
+(defun crc-8-autosar (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 Aliases: CRC-8/8H2F.
@@ -155,14 +155,14 @@ AUTOSAR (24 November 2022), AUTOSAR Classic Platform release R22-11:
 https://www.autosar.org/fileadmin/user_upload/standards/classic/22-11/AUTOSAR_SWS_CRCLibrary.pdf"
 
   (crc--general sequence 8 #x2F #xFF nil nil #xFF))
-(defun crc-8/bluetooth (sequence)
+(defun crc-8-bluetooth (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 Bluetooth SIG (31 January 2023), Bluetooth Specification:
 https://www.bluetooth.org/DocMan/handlers/DownloadDoc.ashx?doc_id=521059"
 
   (crc--general sequence 8 #xA7 #x00   t   t #x00))
-(defun crc-8/cdma2000 (sequence)
+(defun crc-8-cdma2000 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 3rd Generation Partnership Project 2 (3GPP2) (September 2009), Physical layer
@@ -170,14 +170,14 @@ standard for cdma2000 spread spectrum systems, revision E, version 1.0:
 https://web.archive.org/web/20230601141629/https://3gpp2.org/Public_html/Specs/C.S0002-E_v1.0_cdma200_1x_PHY-090925.pdf"
 
   (crc--general sequence 8 #x9B #xFF nil nil #x00))
-(defun crc-8/darc (sequence)
+(defun crc-8-darc (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 ETSI EN 300 751 version 1.2.1 (January 2003):
 https://www.etsi.org/deliver/etsi_en/300700_300799/300751/01.02.01_60/en_300751v010201p.pdf"
 
   (crc--general sequence 8 #x39 #x00   t   t #x00))
-(defun crc-8/dvb-s2 (sequence)
+(defun crc-8-dvb-s2 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 Ethernet POWERLINK Standardisation Group (18 October 2018), OpenSAFETY Safety
@@ -185,7 +185,7 @@ Profile Specification Working Draft Proposal, version 1.5.2:
 https://www.ethernet-powerlink.org/fileadmin/user_upload/Dokumente/Downloads/TECHNICAL_DOCUMENTS/EPSG_WDP_304_V-1-5-2.pdf"
 
   (crc--general sequence 8 #xD5 #x00 nil nil #x00))
-(defun crc-8/ebu (sequence)
+(defun crc-8-ebu (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 Aliases: CRC-8/AES and CRC-8/TECH-3250.
@@ -195,7 +195,7 @@ digital audio interface, 3rd edition:
 https://tech.ebu.ch/docs/tech/tech3250.pdf"
 
   (crc--general sequence 8 #x1D #xFF   t   t #x00))
-(defun crc-8/gsm-a (sequence)
+(defun crc-8-gsm-a (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 Aliases: CRC-8/SAE-J1850-ZERO.
@@ -205,7 +205,7 @@ Section 3.1.1.1, pp.17–18):
 https://www.etsi.org/deliver/etsi_ts/100900_100999/100909/08.09.00_60/ts_100909v080900p.pdf"
 
   (crc--general sequence 8 #x1D #x00 nil nil #x00))
-(defun crc-8/gsm-b (sequence)
+(defun crc-8-gsm-b (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 ETSI TS 100 909 version 8.9.0 (January 2005) (Full mathematical description in
@@ -215,7 +215,7 @@ p.89):
 https://www.etsi.org/deliver/etsi_ts/100900_100999/100909/08.09.00_60/ts_100909v080900p.pdf"
 
   (crc--general sequence 8 #x49 #x00 nil nil #xFF))
-(defun crc-8/hitag (sequence)
+(defun crc-8-hitag (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 Philips Semiconductors (18 July 2006), HTS IC H32/HTS IC H56/HTS IC H48
@@ -225,7 +225,7 @@ transponder IC Product Specification, revision 3.1:
 https://media.digikey.com/pdf/Data%20Sheets/NXP%20PDFs/HTS.pdf"
 
   (crc--general sequence 8 #x1D #xFF nil nil #x00))
-(defun crc-8/i-code (sequence)
+(defun crc-8-i-code (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 Philips Semiconductors (30 January 2004), SL2 ICS11 Product Specification,
@@ -236,7 +236,7 @@ revision 3.0:
 https://web.archive.org/web/20160407112238/http://www.nxp.com/documents/data_sheet/SL092030.pdf"
 
   (crc--general sequence 8 #x1D #xFD nil nil #x00))
-(defun crc-8/itu (sequence)
+(defun crc-8-itu (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 Aliases: CRC-8/I-432-1.
@@ -246,7 +246,7 @@ ITU-T Recommendation I.432.1 (February 1999):
 https://www.itu.int/rec/T-REC-I.432.1/en"
 
   (crc--general sequence 8 #x07 #x00 nil nil #x55))
-(defun crc-8/lte (sequence)
+(defun crc-8-lte (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 3rd Generation Partnership Project (3GPP) TS 36.212 version 17.1.0 (March 2022)
@@ -263,7 +263,7 @@ ETSI TS 136 321 version 17.5.0 (July 2023):
 https://www.etsi.org/deliver/etsi_ts/136300_136399/136321/17.05.00_60/ts_136321v170500p.pdf"
 
   (crc--general sequence 8 #x9B #x00 nil nil #x00))
-(defun crc-8/maxim (sequence)
+(defun crc-8-maxim (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 Aliases: CRC-8/MAXIM-DOW, DOW-CRC.
@@ -276,7 +276,7 @@ Maxim Integrated (22 August 2012), Application Note 27 (PDF, HTML)
 https://www.maximintegrated.com/en/design/technical-documents/app-notes/2/27.html"
 
   (crc--general sequence 8 #x31 #x00   t   t #x00))
-(defun crc-8/mifare-mad (sequence)
+(defun crc-8-mifare-mad (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 NXP Semiconductors (6 November 2018), Application note AN10787: MIFARE
@@ -285,7 +285,7 @@ Application Directory (MAD), rev.  7.4:
 https://www.nxp.com/docs/en/application-note/AN10787.pdf"
 
   (crc--general sequence 8 #x1D #xC7 nil nil #x00))
-(defun crc-8/nrsc-5 (sequence)
+(defun crc-8-nrsc-5 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 iBiquity Digital Corporation (16 December 2016), HD Radio™ Air Interface Design
@@ -295,7 +295,7 @@ Committee):
 https://www.nrscstandards.org/standards-and-guidelines/documents/standards/nrsc-5-d/reference-docs/1017s.pdf"
 
   (crc--general sequence 8 #x31 #xFF nil nil #x00))
-(defun crc-8/opensafety (sequence)
+(defun crc-8-opensafety (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 Ethernet POWERLINK Standardisation Group (18 October 2018), OpenSAFETY Safety
@@ -306,7 +306,7 @@ Profile Specification Working Draft Proposal, version 1.5.2:
 https://www.ethernet-powerlink.org/fileadmin/user_upload/Dokumente/Downloads/TECHNICAL_DOCUMENTS/EPSG_WDP_304_V-1-5-2.pdf"
 
   (crc--general sequence 8 #x2F #x00 nil nil #x00))
-(defun crc-8/rohc (sequence)
+(defun crc-8-rohc (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 IETF RFC 3095 (July 2001):
@@ -314,7 +314,7 @@ IETF RFC 3095 (July 2001):
 https://datatracker.ietf.org/doc/html/rfc3095"
 
   (crc--general sequence 8 #x07 #xFF   t   t #x00))
-(defun crc-8/sae-j1850 (sequence)
+(defun crc-8-sae-j1850 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 AUTOSAR (24 November 2022), AUTOSAR Classic Platform release R22-11,
@@ -324,7 +324,7 @@ Specification of CRC Routines:
 https://www.autosar.org/fileadmin/user_upload/standards/classic/22-11/AUTOSAR_SWS_CRCLibrary.pdf"
 
   (crc--general sequence 8 #x1D #xFF nil nil #xFF))
-(defun crc-8/wcdma (sequence)
+(defun crc-8-wcdma (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 Andrew Richardson (17 March 2005), WCDMA Design Handbook, Cambridge University
@@ -345,7 +345,7 @@ ITU-T Recommendation I.610 (February 1999):
 https://www.itu.int/rec/T-REC-I.610/en"
 
   (crc--general sequence 10 #x233 #x000 nil nil #x000))
-(defun crc-10/cdma2000 (sequence)
+(defun crc-10-cdma2000 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 3rd Generation Partnership Project 2 (3GPP2) (September 2009), Physical layer
@@ -356,7 +356,7 @@ standard for cdma2000 spread spectrum systems, revision E, version 1.0:
 https://web.archive.org/web/20230601141629/https://3gpp2.org/Public_html/Specs/C.S0002-E_v1.0_cdma200_1x_PHY-090925.pdf"
 
   (crc--general sequence 10 #x3D9 #x3FF nil nil #x000))
-(defun crc-10/gsm (sequence)
+(defun crc-10-gsm (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 ETSI TS 100 909 version 8.9.0 (January 2005):
@@ -377,7 +377,7 @@ Specification, version 3.0.1:
 https://svn.ipd.kit.edu/nlrp/public/FlexRay/FlexRay%E2%84%A2%20Protocol%20Specification%20Version%203.0.1.pdf"
 
   (crc--general sequence 11 #x385 #x01A nil nil #x000))
-(defun crc-11/umts (sequence)
+(defun crc-11-umts (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 3rd Generation Partnership Project (3GPP) TS 25.427 version 17.0.0 (April
@@ -388,7 +388,7 @@ https://www.etsi.org/deliver/etsi_ts/125400_125499/125427/17.00.00_60/ts_125427v
 
   (crc--general sequence 11 #x307 #x000 nil nil #x000))
 
-(defun crc-12/cdma2000 (sequence)
+(defun crc-12-cdma2000 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 3rd Generation Partnership Project 2 (3GPP2) (September 2009), Physical layer
@@ -399,7 +399,7 @@ standard for cdma2000 spread spectrum systems, revision E, version 1.0:
 https://web.archive.org/web/20230601141629/https://3gpp2.org/Public_html/Specs/C.S0002-E_v1.0_cdma200_1x_PHY-090925.pdf"
 
   (crc--general sequence 12 #xF13 #xFFF nil nil #x000))
-(defun crc-12/dect (sequence)
+(defun crc-12-dect (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 Aliases: X-CRC-12.
@@ -409,7 +409,7 @@ ETSI EN 300 175-3 version 2.5.1 (August 2013):
 https://www.etsi.org/deliver/etsi_en/300100_300199/30017503/02.05.01_60/en_30017503v020501p.pdf"
 
   (crc--general sequence 12 #x80F #x000 nil nil #x000))
-(defun crc-12/gsm (sequence)
+(defun crc-12-gsm (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 ETSI TS 100 909 version 8.9.0 (January 2005):
@@ -420,7 +420,7 @@ ETSI TS 100 909 version 8.9.0 (January 2005):
 https://www.etsi.org/deliver/etsi_ts/100900_100999/100909/08.09.00_60/ts_100909v080900p.pdf"
 
   (crc--general sequence 12 #xD31 #x000 nil nil #xFFF))
-(defun crc-12/umts (sequence)
+(defun crc-12-umts (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 Aliases: CRC-12/3GPP.
@@ -434,7 +434,7 @@ https://www.etsi.org/deliver/etsi_ts/125200_125299/125212/17.00.00_60/ts_125212v
 
   (crc--general sequence 12 #x80F #x000 nil   t #x000))
 
-(defun crc-13/bbc (sequence)
+(defun crc-13-bbc (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 S. R. Ely, D. T. Wright, British Broadcasting Corporation (March 1982), L.F.
@@ -446,7 +446,7 @@ https://downloads.bbc.co.uk/rd/pubs/reports/1982-02.pdf"
 
   (crc--general sequence 13 #x1CF5 #x0000 nil nil #x0000))
 
-(defun crc-14/darc (sequence)
+(defun crc-14-darc (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 ETSI EN 300 751 version 1.2.1 (January 2003):
@@ -455,7 +455,7 @@ ETSI EN 300 751 version 1.2.1 (January 2003):
 https://www.etsi.org/deliver/etsi_en/300700_300799/300751/01.02.01_60/en_300751v010201p.pdf"
 
   (crc--general sequence 14 #x0805 #x0000   t   t #x0000))
-(defun crc-14/gsm (sequence)
+(defun crc-14-gsm (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 ETSI TS 100 909 version 8.9.0 (January 2005):
@@ -476,7 +476,7 @@ Robert Bosch GmbH (September 1991), CAN 2.0 Specification:
 https://github.com/ThrowTheSwitch/pcan-ruby/raw/master/doc/can2spec.pdf"
 
   (crc--general sequence 15 #x4599 #x0000 nil nil #x0000))
-(defun crc-15/mpt1327 (sequence)
+(defun crc-15-mpt1327 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 8-bit value.
 
 UK Radiocommunications Agency (20 June 1997), MPT 1327: A signalling standard
@@ -499,7 +499,7 @@ Specification of CRC Routines:
 https://www.autosar.org/fileadmin/user_upload/standards/classic/22-11/AUTOSAR_SWS_CRCLibrary.pdf"
 
   (crc--general sequence 16 #x8005 #x0000   t   t #x0000))
-(defun crc-16/cdma2000 (sequence)
+(defun crc-16-cdma2000 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 3rd Generation Partnership Project 2 (3GPP2) (September 2009), Physical layer
@@ -510,7 +510,7 @@ standard for cdma2000 spread spectrum systems, revision E, version 1.0:
 https://web.archive.org/web/20230601141629/https://3gpp2.org/Public_html/Specs/C.S0002-E_v1.0_cdma200_1x_PHY-090925.pdf"
 
   (crc--general sequence 16 #xC867 #xFFFF nil nil #x0000))
-(defun crc-16/cms (sequence)
+(defun crc-16-cms (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 \"movilstore\" (24 January 2011), Computer Interfacing Forum topic 1650:
@@ -518,7 +518,7 @@ https://web.archive.org/web/20230601141629/https://3gpp2.org/Public_html/Specs/C
 https://web.archive.org/web/20181116144459/https://www.lammertbies.nl/forum/viewtopic.php?t=1650"
 
   (crc--general sequence 16 #x8005 #xFFFF nil nil #x0000))
-(defun crc-16/dds-110 (sequence)
+(defun crc-16-dds-110 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 ELV Elektronik AG (March 2008), Software-Schnittstelle der Funktionsgeneratoren
@@ -527,7 +527,7 @@ DDS 10/DDS 110 (in German):
 https://web.archive.org/web/20150121125358/http://www.elv-downloads.de/downloads/journal/dds10_110.pdf"
 
   (crc--general sequence 16 #x8005 #x800D nil nil #x0000))
-(defun crc-16/dect-r (sequence)
+(defun crc-16-dect-r (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Aliases: R-CRC-16.
@@ -538,7 +538,7 @@ ETSI EN 300 175-3 version 2.5.1 (August 2013)
 https://www.etsi.org/deliver/etsi_en/300100_300199/30017503/02.05.01_60/en_30017503v020501p.pdf"
 
   (crc--general sequence 16 #x0589 #x0000 nil nil #x0001))
-(defun crc-16/dect-x (sequence)
+(defun crc-16-dect-x (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Aliases: X-CRC-16.
@@ -549,7 +549,7 @@ ETSI EN 300 175-3 version 2.5.1 (August 2013):
 https://www.etsi.org/deliver/etsi_en/300100_300199/30017503/02.05.01_60/en_30017503v020501p.pdf"
 
   (crc--general sequence 16 #x0589 #x0000 nil nil #x0000))
-(defun crc-16/dnp (sequence)
+(defun crc-16-dnp (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Lammert Bies (August 2011), CRC calculator
@@ -557,7 +557,7 @@ Lammert Bies (August 2011), CRC calculator
 https://www.lammertbies.nl/comm/info/crc-calculation"
 
   (crc--general sequence 16 #x3D65 #x0000   t   t #xFFFF))
-(defun crc-16/en-13757 (sequence)
+(defun crc-16-en-13757 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Patrick Seem, Texas Instruments, Inc. (23 October 2008), AN067: Wireless MBUS
@@ -568,7 +568,7 @@ Implementation with CC1101 and MSP430:
 https://www.ti.com/lit/an/swra234a/swra234a.pdf"
 
   (crc--general sequence 16 #x3D65 #x0000 nil nil #xFFFF))
-(defun crc-16/genibus (sequence)
+(defun crc-16-genibus (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Aliases: CRC-16/DARC, CRC-16/EPC, CRC-16/EPC-C1G2, CRC-16/I-CODE.
@@ -582,7 +582,7 @@ Radio-Frequency Identity Protocols; Generation-2 UHF RFID Standard, release 2.1:
 https://www.gs1.org/sites/default/files/docs/epc/gs1-epc-gen2v2-uhf-airinterface_i21_r_2018-09-04.pdf"
 
   (crc--general sequence 16 #x1021 #xFFFF nil nil #xFFFF))
-(defun crc-16/gsm (sequence)
+(defun crc-16-gsm (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 ETSI TS 100 909 version 8.9.0 (January 2005):
@@ -591,7 +591,7 @@ ETSI TS 100 909 version 8.9.0 (January 2005):
 https://www.etsi.org/deliver/etsi_ts/100900_100999/100909/08.09.00_60/ts_100909v080900p.pdf"
 
   (crc--general sequence 16 #x1021 #x0000 nil nil #xFFFF))
-(defun crc-16/ibm-3740 (sequence)
+(defun crc-16-ibm-3740 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Aliases: CRC-16/AUTOSAR, CRC-16/CCITT-FALSE.
@@ -603,7 +603,7 @@ Specification of CRC Routines:
 https://www.autosar.org/fileadmin/user_upload/standards/classic/22-11/AUTOSAR_SWS_CRCLibrary.pdf"
 
   (crc--general sequence 16 #x1021 #xFFFF nil nil #x0000))
-(defun crc-16/iso-iec-14443-3-a (sequence)
+(defun crc-16-iso-iec-14443-3-a (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Aliases: CRC-A.
@@ -614,7 +614,7 @@ ISO/IEC FCD 14443-3 (24 November 2008):
 https://wg8.de/wg8n1496_17n3613_Ballot_FCD14443-3.pdf"
 
   (crc--general sequence 16 #x1021 #xC6C6   t   t #x0000))
-(defun crc-16/iso-iec-14443-3-b (sequence)
+(defun crc-16-iso-iec-14443-3-b (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Aliases: CRC-16/IBM-SDLC, CRC-16/ISO-HDLC, CRC-16/X-25, CRC-B, X-25.
@@ -624,7 +624,7 @@ ITU-T Recommendation T.30 (September 2005):
 https://www.itu.int/rec/T-REC-T.30/en"
 
   (crc--general sequence 16 #x1021 #xFFFF   t   t #xFFFF))
-(defun crc-16/kermit (sequence)
+(defun crc-16-kermit (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Aliases: CRC-16/BLUETOOTH, CRC-16/CCITT, CRC-16/CCITT-TRUE, CRC-16/V-41-LSB,
@@ -636,7 +636,7 @@ ITU-T Recommendation V.41 (November 1988):
 https://www.itu.int/rec/T-REC-V.41/en"
 
   (crc--general sequence 16 #x1021 #x0000   t   t #x0000))
-(defun crc-16/lj1200 (sequence)
+(defun crc-16-lj1200 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Dennis Sheirer (24 January 2015), SDRTrunk module:
@@ -645,7 +645,7 @@ Dennis Sheirer (24 January 2015), SDRTrunk module:
 https://github.com/DSheirer/sdrtrunk/blob/master/src/main/java/io/github/dsheirer/edac/CRCLJ.java"
 
   (crc--general sequence 16 #x6F63 #x0000 nil nil #x0000))
-(defun crc-16/m17 (sequence)
+(defun crc-16-m17 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 M17 Project (13 July 2023), M17 protocol specification, version 1.0:
@@ -654,7 +654,7 @@ M17 Project (13 July 2023), M17 protocol specification, version 1.0:
 https://spec.m17project.org/pdf/M17_spec.pdf"
 
   (crc--general sequence 16 #x5935 #xFFFF nil nil #x0000))
-(defun crc-16/maxim-dow (sequence)
+(defun crc-16-maxim-dow (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Aliases: CRC-16/MAXIM.
@@ -665,7 +665,7 @@ Maxim Integrated (8 August 2012), DS1921G Datasheet:
 https://datasheets.maximintegrated.com/en/ds/DS1921G.pdf"
 
   (crc--general sequence 16 #x8005 #x0000   t   t #xFFFF))
-(defun crc-16/mcrf4xx (sequence)
+(defun crc-16-mcrf4xx (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Youbok Lee, PhD, Microchip Technology Inc. (16 July 2001), \"CRC Algorithm for
@@ -678,7 +678,7 @@ MCRF45X Read/Write Device\":
 https://ww1.microchip.com/downloads/en/AppNotes/00752a.pdf"
 
   (crc--general sequence 16 #x1021 #xFFFF   t   t #x0000))
-(defun crc-16/modbus (sequence)
+(defun crc-16-modbus (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Aliases: MODBUS.
@@ -689,7 +689,7 @@ MODICON Inc. (June 1996), Modbus Protocol Reference Guide, Rev.  J:
 https://modbus.org/docs/PI_MBUS_300.pdf"
 
   (crc--general sequence 16 #x8005 #xFFFF   t   t #x0000))
-(defun crc-16/nrsc-5 (sequence)
+(defun crc-16-nrsc-5 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 iBiquity Digital Corporation (23 August 2011), HD Radio™ Air Interface Design
@@ -699,7 +699,7 @@ National Radio Systems Committee):
 https://www.nrscstandards.org/standards-and-guidelines/documents/standards/nrsc-5-d/reference-docs/1020s.pdf"
 
   (crc--general sequence 16 #x080B #xFFFF   t   t #x0000))
-(defun crc-16/opensafety-a (sequence)
+(defun crc-16-opensafety-a (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Ethernet POWERLINK Standardisation Group (18 October 2018), OpenSAFETY Safety
@@ -710,7 +710,7 @@ Profile Specification Working Draft Proposal, version 1.5.2:
 https://www.ethernet-powerlink.org/fileadmin/user_upload/Dokumente/Downloads/TECHNICAL_DOCUMENTS/EPSG_WDP_304_V-1-5-2.pdf"
 
   (crc--general sequence 16 #x5935 #x0000 nil nil #x0000))
-(defun crc-16/opensafety-b (sequence)
+(defun crc-16-opensafety-b (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Ethernet POWERLINK Standardisation Group (18 October 2018), OpenSAFETY Safety
@@ -721,7 +721,7 @@ Profile Specification Working Draft Proposal, version 1.5.2:
 https://www.ethernet-powerlink.org/fileadmin/user_upload/Dokumente/Downloads/TECHNICAL_DOCUMENTS/EPSG_WDP_304_V-1-5-2.pdf"
 
   (crc--general sequence 16 #x755B #x0000 nil nil #x0000))
-(defun crc-16/profibus (sequence)
+(defun crc-16-profibus (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Aliases: CRC-16/IEC-61158-2.
@@ -734,14 +734,14 @@ Edition 1.0, Part 9:
 https://web.archive.org/web/20081116195826/https://www.kuebler.com/PDFs/Feldbus_Multiturn/specification_DP.pdf"
 
   (crc--general sequence 16 #x1DCF #xFFFF nil nil #xFFFF))
-(defun crc-16/riello (sequence)
+(defun crc-16-riello (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 \"Snamprogetti\" (17 April 2009), Computer Interfacing Forum topic 1305:
 https://web.archive.org/web/20181116155838/https://www.lammertbies.nl/forum/viewtopic.php?t=1305"
 
   (crc--general sequence 16 #x1021 #xB2AA   t   t #x0000))
-(defun crc-16/spi-fujitsu (sequence)
+(defun crc-16-spi-fujitsu (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Aliases: CRC-16/AUG-CCITT.
@@ -751,7 +751,7 @@ Fujitsu Semiconductor (10 October 2007), FlexRay ASSP MB88121B User's Manual:
 https://web.archive.org/web/20221017013602/https://www.fujitsu.com/downloads/MICRO/fma/pdfmcu/um-mb88121-am15-11201-1e.pdf"
 
   (crc--general sequence 16 #x1021 #x1D0F nil nil #x0000))
-(defun crc-16/t10-dif (sequence)
+(defun crc-16-t10-dif (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Gerald Houlder, INCITS Technical Committee T10 (2 May 2003), End-to-End Data
@@ -761,7 +761,7 @@ Protection Proposal:
 https://www.t10.org/ftp/t10/document.03/03-111r0.pdf"
 
   (crc--general sequence 16 #x8BB7 #x0000 nil nil #x0000))
-(defun crc-16/teledisk (sequence)
+(defun crc-16-teledisk (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Will Kranz (8 December 2002), wteledsk 1.01:
@@ -769,7 +769,7 @@ Will Kranz (8 December 2002), wteledsk 1.01:
 https://github.com/jmechnich/wteledsk"
 
   (crc--general sequence 16 #xA097 #x0000 nil nil #x0000))
-(defun crc-16/tms37157 (sequence)
+(defun crc-16-tms37157 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Texas Instruments, Inc. (November 2009), TMS37157 datasheet:
@@ -779,7 +779,7 @@ Texas Instruments, Inc. (November 2009), TMS37157 datasheet:
 https://www.ti.com/lit/ds/symlink/tms37157.pdf"
 
   (crc--general sequence 16 #x1021 #x89EC   t   t #x0000))
-(defun crc-16/umts (sequence)
+(defun crc-16-umts (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Aliases: CRC-16/BUYPASS, CRC-16/VERIFONE.
@@ -789,7 +789,7 @@ Verifone, Inc. (May 1995), TCLOAD Reference Manual:
 https://web.archive.org/web/20120603221525/http://www.verifone.com/PDF/guides/tcl_ref.pdf"
 
   (crc--general sequence 16 #x8005 #x0000 nil nil #x0000))
-(defun crc-16/usb (sequence)
+(defun crc-16-usb (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Anonymous (10 July 1997), \"Cyclic Redundancy Checks in USB\" (Draft):
@@ -799,7 +799,7 @@ Anonymous (10 July 1997), \"Cyclic Redundancy Checks in USB\" (Draft):
 https://web.archive.org/web/20160326215031/http://www.usb.org/developers/whitepapers/crcdes.pdf"
 
   (crc--general sequence 16 #x8005 #xFFFF   t   t #xFFFF))
-(defun crc-16/xmodem (sequence)
+(defun crc-16-xmodem (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Aliases: CRC-16/ACORN, CRC-16/LTE, CRC-16/V-41-MSB, XMODEM, ZMODEM.
@@ -810,14 +810,14 @@ ITU-T Recommendation V.41 (November 1988):
 https://www.itu.int/rec/T-REC-V.41/en"
 
   (crc--general sequence 16 #x1021 #x0000 nil nil #x0000))
-(defun crc-16/xmodem-2 (sequence)
+(defun crc-16-xmodem-2 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 https://www.lddgo.net/en/encrypt/crc"
 
   (crc--general sequence 16 #x8408 #x0000   t   t #x0000))
 
-(defun crc-17/can-fd (sequence)
+(defun crc-17-can-fd (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Robert Bosch GmbH (17 April 2012), CAN with Flexible Data-Rate: Specification,
@@ -827,7 +827,7 @@ https://web.archive.org/web/20151017122935/http://www.bosch-semiconductors.de/me
 
   (crc--general sequence 17 #x1685b #x00000 nil nil #x00000))
 
-(defun crc-21/can-fd (sequence)
+(defun crc-21-can-fd (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 16-bit value.
 
 Robert Bosch GmbH (17 April 2012), CAN with Flexible Data-Rate: Specification,
@@ -848,7 +848,7 @@ IETF RFC 4880 (November 2007):
 https://datatracker.ietf.org/doc/html/rfc4880"
 
   (crc--general sequence 24 #x864CFB #xB704CE nil nil #x000000))
-(defun crc-24/ble (sequence)
+(defun crc-24-ble (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 24-bit value.
 
 Bluetooth SIG (31 January 2023), Bluetooth Specification, Core Version 5.4:
@@ -857,7 +857,7 @@ Bluetooth SIG (31 January 2023), Bluetooth Specification, Core Version 5.4:
 https://www.bluetooth.org/DocMan/handlers/DownloadDoc.ashx?doc_id=521059"
 
   (crc--general sequence 24 #x00065B #x555555   t   t #x000000))
-(defun crc-24/flexray-a (sequence)
+(defun crc-24-flexray-a (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 24-bit value.
 
 FlexRay Consortium (October 2010), FlexRay Communications System Protocol
@@ -867,7 +867,7 @@ Specification, version 3.0.1:
 https://svn.ipd.kit.edu/nlrp/public/FlexRay/FlexRay%E2%84%A2%20Protocol%20Specification%20Version%203.0.1.pdf"
 
   (crc--general sequence 24 #x5D6DCB #xFEDCBA nil nil #x000000))
-(defun crc-24/flexray-b (sequence)
+(defun crc-24-flexray-b (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 24-bit value.
 
 FlexRay Consortium (October 2010), FlexRay Communications System Protocol
@@ -877,7 +877,7 @@ Specification, version 3.0.1:
 https://svn.ipd.kit.edu/nlrp/public/FlexRay/FlexRay%E2%84%A2%20Protocol%20Specification%20Version%203.0.1.pdf"
 
   (crc--general sequence 24 #x5D6DCB #xABCDEF nil nil #x000000))
-(defun crc-24/interlaken (sequence)
+(defun crc-24-interlaken (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 24-bit value.
 
 The Interlaken Alliance (7 October 2008), Interlaken Protocol Definition,
@@ -887,7 +887,7 @@ version 1.2:
 https://4b1b46.a2cdn1.secureserver.net/wp-content/uploads/2019/12/Interlaken_Protocol_Definition_v1.2.pdf"
 
   (crc--general sequence 24 #x328B63 #xFFFFFF nil nil #xFFFFFF))
-(defun crc-24/lte-a (sequence)
+(defun crc-24-lte-a (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 24-bit value.
 
 3rd Generation Partnership Project (3GPP) TS 36.212 version 17.1.0 (March
@@ -897,7 +897,7 @@ https://4b1b46.a2cdn1.secureserver.net/wp-content/uploads/2019/12/Interlaken_Pro
 https://www.etsi.org/deliver/etsi_ts/136200_136299/136212/17.01.00_60/ts_136212v170100p.pdf"
 
   (crc--general sequence 24 #x864CFB #x000000 nil nil #x000000))
-(defun crc-24/lte-b (sequence)
+(defun crc-24-lte-b (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 24-bit value.
 
 3rd Generation Partnership Project (3GPP) TS 36.212 version 17.1.0 (March 2022)
@@ -907,7 +907,7 @@ https://www.etsi.org/deliver/etsi_ts/136200_136299/136212/17.01.00_60/ts_136212v
 https://www.etsi.org/deliver/etsi_ts/136200_136299/136212/17.01.00_60/ts_136212v170100p.pdf"
 
   (crc--general sequence 24 #x800063 #x000000 nil nil #x000000))
-(defun crc-24/os-9 (sequence)
+(defun crc-24-os-9 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 24-bit value.
 
 Microware Systems Corporation (January 1983), OS-9 Operating System, System
@@ -918,7 +918,7 @@ https://www.roug.org/soren/6809/os9sysprog.html"
 
   (crc--general sequence 24 #x800063 #xFFFFFF nil nil #xFFFFFF))
 
-(defun crc-30/cdma (sequence)
+(defun crc-30-cdma (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 24-bit value.
 
 CCSA Telecommunication Industry Standard YD/T 1838.3-2008 (5 November 2008):
@@ -927,7 +927,7 @@ https://web.archive.org/web/20181118221951/https://www.ccsa.org.cn/english/yd183
 
   (crc--general sequence 30 #x2030B9C7 #x3FFFFFFF nil nil #x3FFFFFFF))
 
-(defun crc-31/philips (sequence)
+(defun crc-31-philips (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 24-bit value.
 
 Philips 37PF9731 LCD TV:
@@ -948,7 +948,7 @@ ITU-T Recommendation V.42 (March 2002):
 https://www.itu.int/rec/T-REC-V.42/en"
 
   (crc--general sequence 32 #x04C11DB7 #xFFFFFFFF   t   t #xFFFFFFFF))
-(defun crc-32/aixm (sequence)
+(defun crc-32-aixm (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 32-bit value.
 
 Aliases: CRC-32Q.
@@ -960,7 +960,7 @@ EUROCONTROL (20 March 2006), AIXM Primer 4.5:
 https://www.aixm.aero/sites/aixm.aero/files/imce/library/aixm_primer_4-5.pdf"
 
   (crc--general sequence 32 #x814141AB #x00000000 nil nil #x00000000))
-(defun crc-32/autosar (sequence)
+(defun crc-32-autosar (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 32-bit value.
 
 AUTOSAR (24 November 2022), AUTOSAR Classic Platform release R22-11,
@@ -970,7 +970,7 @@ Specification of CRC Routines:
 https://www.autosar.org/fileadmin/user_upload/standards/classic/22-11/AUTOSAR_SWS_CRCLibrary.pdf"
 
   (crc--general sequence 32 #xF4ACFB13 #xFFFFFFFF   t   t #xFFFFFFFF))
-(defun crc-32/base91-d (sequence)
+(defun crc-32-base91-d (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 32-bit value.
 
 Aliases: CRC-32D.
@@ -982,7 +982,7 @@ Systems and Networks:
 https://users.ece.cmu.edu/~koopman/networks/dsn02/dsn02_koopman.pdf"
 
   (crc--general sequence 32 #xA833982B #xFFFFFFFF   t   t #xFFFFFFFF))
-(defun crc-32/bzip2 (sequence)
+(defun crc-32-bzip2 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 32-bit value.
 
 Aliases: CRC-32/AAL5, CRC-32/DECT-B, B-CRC-32.
@@ -992,7 +992,7 @@ ITU-T Recommendation I.363.5 (August 1996):
 https://www.itu.int/rec/T-REC-I.363.5/en"
 
   (crc--general sequence 32 #x04C11DB7 #xFFFFFFFF nil nil #xFFFFFFFF))
-(defun crc-32/cd-rom-edc (sequence)
+(defun crc-32-cd-rom-edc (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 32-bit value.
 
 ECMA standard ECMA-130, edition 2 (June 1996) — ISO/IEC 10149:1995:
@@ -1000,7 +1000,7 @@ ECMA standard ECMA-130, edition 2 (June 1996) — ISO/IEC 10149:1995:
 https://www.ecma-international.org/wp-content/uploads/ECMA-130_2nd_edition_june_1996.pdf"
 
   (crc--general sequence 32 #x8001801B #x00000000   t   t #x00000000))
-(defun crc-32/cksum (sequence)
+(defun crc-32-cksum (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 32-bit value.
 
 Aliases: CKSUM, CRC-32/POSIX.
@@ -1011,7 +1011,7 @@ Utilities Issue 5, Reference Pages: cksum:
 https://pubs.opengroup.org/onlinepubs/7990989775/xcu/cksum.html"
 
   (crc--general sequence 32 #x04C11DB7 #x00000000 nil nil #xFFFFFFFF))
-(defun crc-32/iscsi (sequence)
+(defun crc-32-iscsi (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 32-bit value.
 
 Aliases: CRC-32/BASE91-C, CRC-32/CASTAGNOLI, CRC-32/INTERLAKEN, CRC-32C.
@@ -1023,7 +1023,7 @@ IETF RFC 7143 (April 2014):
 https://datatracker.ietf.org/doc/html/rfc7143"
 
   (crc--general sequence 32 #x1EDC6F41 #xFFFFFFFF   t   t #xFFFFFFFF))
-(defun crc-32/jamcrc (sequence)
+(defun crc-32-jamcrc (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 32-bit value.
 
 Aliases: JAMCRC.
@@ -1033,13 +1033,13 @@ Altera Corporation (April 1999), crc MegaCore Function Data Sheet, version 2:
 https://web.archive.org/web/20070221144121/http://www.msc.rl.ac.uk/europractice/vendors/dscrc.pdf"
 
   (crc--general sequence 32 #x04C11DB7 #xFFFFFFFF   t   t #x00000000))
-(defun crc-32/koopman (sequence)
+(defun crc-32-koopman (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 32-bit value.
 
 https://www.lddgo.net/en/encrypt/crc"
 
   (crc--general sequence 32 #x741B8CD7 #xFFFFFFFF   t   t #xFFFFFFFF))
-(defun crc-32/mef (sequence)
+(defun crc-32-mef (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 32-bit value.
 
 Mayo Foundation (19 February 2016), Multiscale Electrophysiology File Format
@@ -1049,7 +1049,7 @@ Version 3.0 (MEF3) specification:
 https://github.com/msel-source/meflib/raw/multiplatform/MEF%203%20Specification.pdf"
 
   (crc--general sequence 32 #x741B8CD7 #xFFFFFFFF   t   t #x00000000))
-(defun crc-32/mpeg-2 (sequence)
+(defun crc-32-mpeg-2 (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 32-bit value.
 
 ISO/IEC 13818-1:2000 — ITU-T Recommendation H.222.0 (February 2000):
@@ -1058,11 +1058,11 @@ ISO/IEC 13818-1:2000 — ITU-T Recommendation H.222.0 (February 2000):
 --Partial shift register diagram (Annex A, p.97)"
 
   (crc--general sequence 32 #x04C11DB7 #xFFFFFFFF nil nil #x00000000))
-(defun crc-32/sata (sequence)
+(defun crc-32-sata (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 32-bit value."
 
   (crc--general sequence 32 #x04C11DB7 #x52325032 nil nil #x00000000))
-(defun crc-32/xfer (sequence)
+(defun crc-32-xfer (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 32-bit value.
 
 Aliases: XFER.
@@ -1073,7 +1073,7 @@ https://www.g7jjf.com/bbc.htm"
 
   (crc--general sequence 32 #x000000AF #x00000000 nil nil #x00000000))
 
-(defun crc-40/gsm (sequence)
+(defun crc-40-gsm (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 40-bit value.
 
 ETSI TS 100 909 version 8.9.0 (January 2005):
@@ -1093,7 +1093,7 @@ https://www.ecma-international.org/wp-content/uploads/ECMA-182_1st_edition_decem
 
   (crc--general sequence           64  #x42F0E1EBA9EA3693
                 #X0000000000000000 nil nil                #x0000000000000000))
-(defun crc-64/go-iso (sequence)
+(defun crc-64-go-iso (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 64-bit value.
 
 The Go Authors, The Go Programming Language, package crc64:
@@ -1102,7 +1102,7 @@ https://pkg.go.dev/hash/crc64"
 
   (crc--general sequence           64  #x000000000000001B
                 #xFFFFFFFFFFFFFFFF   t   t                #xFFFFFFFFFFFFFFFF))
-(defun crc-64/ms (sequence)
+(defun crc-64-ms (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 64-bit value.
 
 Microsoft Corporation (25 June 2021), [MS-FCIADS]: File Classification
@@ -1112,7 +1112,7 @@ https://winprotocoldoc.blob.core.windows.net/productionwindowsarchives/MS-FCIADS
 
   (crc--general sequence           64  #x259C84CBA6426349
                 #xFFFFFFFFFFFFFFFF   t   t                #x0000000000000000))
-(defun crc-64/redis (sequence)
+(defun crc-64-redis (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 64-bit value.
 
 Matt Stancliff et al.  (16 November 2021), Redis module redis/src/crc64.c:
@@ -1122,7 +1122,7 @@ https://github.com/redis/redis/blob/unstable/src/crc64.c"
 
   (crc--general sequence           64  #xAD93D23594C935A9
                 #x0000000000000000   t   t                #x0000000000000000))
-(defun crc-64/we (sequence)
+(defun crc-64-we (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 64-bit value.
 
 Wolfgang Ehrhardt (27 March 2012), CRC/Hash plugin for FAR Manager:
@@ -1130,7 +1130,7 @@ Wolfgang Ehrhardt (27 March 2012), CRC/Hash plugin for FAR Manager:
 
   (crc--general sequence           64  #x42F0E1EBA9EA3693
                 #xFFFFFFFFFFFFFFFF nil nil                #xFFFFFFFFFFFFFFFF))
-(defun crc-64/xz (sequence)
+(defun crc-64-xz (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 64-bit value.
 
 Aliases: CRC-64/GO-ECMA.
@@ -1144,7 +1144,7 @@ https://www.autosar.org/fileadmin/user_upload/standards/classic/22-11/AUTOSAR_SW
   (crc--general sequence           64  #x42F0E1EBA9EA3693
                 #xFFFFFFFFFFFFFFFF   t   t                #xFFFFFFFFFFFFFFFF))
 
-(defun crc-82/darc (sequence)
+(defun crc-82-darc (sequence)
   "Convert a SEQUENCE (a list, vector, or string) to a hashed 80-bit value.
 
 ETSI EN 300 751 version 1.2.1 (January 2003):
